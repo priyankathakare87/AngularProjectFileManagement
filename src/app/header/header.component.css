@@ -1,0 +1,27 @@
+.title-center {
+  margin: 0 auto;
+}
+
+.toolbar-height{
+  min-height: 90px !important;
+  height: 90px !important;
+}
+.toolbarbutton-left-margin{
+  margin-left: 30px;
+}
+
+div{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: smaller;
+}
+/* img{
+  margin: auto;
+  height: 250px;
+  width: 1444px;
+} */
+.in-h-image {
+  background: url('D:\SCI Project\FileManagement\src\assets\images\keyboard.jpg') no-repeat;
+  height: 300px;
+  background-size: cover;
+}
+
