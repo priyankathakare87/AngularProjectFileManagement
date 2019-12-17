@@ -20,7 +20,7 @@ div{
   width: 1444px;
 } */
 .in-h-image {
-  background: url('D:\SCI Project\FileManagement\src\assets\images\keyboard.jpg') no-repeat;
+  background: url('assets/images/keyboard.jpg') no-repeat;
   height: 300px;
   background-size: cover;
 }
