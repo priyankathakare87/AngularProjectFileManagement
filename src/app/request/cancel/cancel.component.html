@@ -1,0 +1,66 @@
+<p>cancel works!</p>
+
+<!----
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Asset Type</th>
+            <th>Model/Brand</th>
+            <th>Refernce No</th>
+            <th>Used By</th>
+            <th>Select</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let asset of myAssets; index as i">
+           <td>{{ i + 1 }}</td>
+           <td>{{ asset.type }}</td>
+           <td>{{ asset.model }}</td>
+           <td>{{ asset.no }}</td>
+           <td>{{ asset.useBy }}</td>
+           <td><input type="checkbox" (change)="onSelect($event,asset)"></td>
+
+        </tr>
+
+    </tbody>
+</table>
+<button mat-raised-button type="button" color="primary" (click)="onSubmit()" >Submit</button>
+-->
+
+<!--
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Country</th>
+      <th scope="col">Area</th>
+      <th scope="col">Population</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let country of countries; index as i">
+      <th scope="row">{{ i + 1 }}</th>
+      <td>
+        <img [src]="'https://upload.wikimedia.org/wikipedia/commons/' + country.flag" class="mr-2" style="width: 20px">
+        {{ country.name }}
+      </td>
+      <td>{{ country.area | number }}</td>
+      <td>{{ country.population | number }}</td>
+    </tr>
+    </tbody>
+  </table>
+  -->
+
+  <ag-grid-angular
+  #agGrid
+  style="width:850px; height:150px; margin: auto; "
+  class="ag-theme-blue"
+  [rowData]="rowData | async"
+  [columnDefs]="columnDefs"
+  rowSelection="multiple">
+</ag-grid-angular>
+
+<button mat-raised-button color="primary" (click)="getSelectedRows()">Submit</button>

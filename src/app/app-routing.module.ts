@@ -7,6 +7,8 @@ import { InitiateNoteComponent } from './initiate-note/initiate-note.component';
 import { AssetReqComponent } from './asset/asset-req/asset-req.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HeaderComponent } from './header/header.component';
+import { HardsoftComponent } from './request/hardsoft/hardsoft.component';
+import { CancelComponent } from './request/cancel/cancel.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -14,7 +16,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'assetreq', component: AssetReqComponent },
-  { path: 'new-request', component: HeaderComponent }
+  { path: 'new-request', component: HeaderComponent },
+  { path: 'hardsof', component: HardsoftComponent},
+  { path: 'cancel', component: CancelComponent }
 ];
 
 @NgModule({
