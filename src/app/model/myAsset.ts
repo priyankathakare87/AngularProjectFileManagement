@@ -1,4 +1,4 @@
-export interface MyAsset{
+export interface MyAsset {
     type: string;
     model: string;
     no: string;

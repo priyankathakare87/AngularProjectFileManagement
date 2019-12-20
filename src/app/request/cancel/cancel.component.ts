@@ -38,13 +38,13 @@ const COUNTRIES: Country[] = [
 ];
 */
 
-const assets : MyAsset[] =
+const assets: MyAsset[] =
 [
-  {'type':'desktop', 'model':'Dell 780','no':'SCI/09/500001796','useBy':'Self'},
-  {'type':'desktop', 'model':'Dell 360','no':'SCI/09/500001593','useBy':'Vendor'},
-  {'type':'Printer', 'model':'HP 5622','no':'SCI/09/600000326','useBy':'Self'},
-  {'type':'SAP', 'model':'BO License','no':'SCI/45/4545','useBy':'Self'}
-]
+  {type: 'desktop', model: 'Dell 780', no: 'SCI/09/500001796', useBy: 'Self'},
+  {type: 'desktop', model: 'Dell 360', no: 'SCI/09/500001593', useBy: 'Vendor'},
+  {type: 'Printer', model: 'HP 5622', no: 'SCI/09/600000326', useBy: 'Self'},
+  {type: 'SAP', model: 'BO License', no: 'SCI/45/4545', useBy: 'Self'}
+];
 
 
 
@@ -56,9 +56,9 @@ const assets : MyAsset[] =
 })
 export class CancelComponent implements OnInit {
   @ViewChild('agGrid', { static: true }) agGrid: AgGridAngular;
-  //countries = COUNTRIES;
+  // countries = COUNTRIES;
 
-  public myAssets;// = assets;
+  public myAssets; // = assets;
 
   columnDefs = [
     {
@@ -77,17 +77,17 @@ export class CancelComponent implements OnInit {
   constructor(private myAsset: MyAssetService) {}
 
   ngOnInit() {
-    //this.rowData = this.myAssets;
+    // this.rowData = this.myAssets;
     // this.myAsset.getMyAssets()
     //    .subscribe(data => this.myAssets = data);
 
     this.rowData = this.myAsset.getMyAssetsNormal();
-    //console.log("data from node " + this.rowData + 'dsfsdfs');
+    // console.log("data from node " + this.rowData + 'dsfsdfs');
   }
 
   onSelect(event, selectedAsset) {
-    //console.log(selectedAsset);
-    //console.log(event);
+    // console.log(selectedAsset);
+    // console.log(event);
   }
 
   getSelectedRows() {
