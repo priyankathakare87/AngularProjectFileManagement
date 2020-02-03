@@ -26,6 +26,12 @@ import { ProfileComponent } from './profile/profile.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoginNewComponent } from './login-new/login-new.component';
 import { NotificationComponent } from './notification/notification.component';
+import { HardsoftComponent } from './request/hardsoft/hardsoft.component';
+import { CancelComponent } from './request/cancel/cancel.component';
+import { AgGridModule } from 'ag-grid-angular';
+import { MatSelectModule } from '@angular/material/select';
+import { MatRadioModule } from '@angular/material/radio';
+import { MyAssetsComponent } from './my-assets/my-assets.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +47,10 @@ import { NotificationComponent } from './notification/notification.component';
     FooterComponent,
     ProfileComponent,
     LoginNewComponent,
-    NotificationComponent
+    NotificationComponent,
+    HardsoftComponent,
+    CancelComponent,
+    MyAssetsComponent
   ],
   imports: [
     NgbModule,
@@ -61,7 +70,10 @@ import { NotificationComponent } from './notification/notification.component';
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgGridModule.withComponents([]),
+    MatSelectModule,
+    MatRadioModule,
   ],
   providers: [AssetService, LoginService],
   bootstrap: [AppComponent]
