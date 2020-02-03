@@ -5,7 +5,7 @@ import { FormControl } from '@angular/forms';
 import { MyAssetService } from '../services/my-asset.service';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { MyAsset } from '../../model/myAsset';
+
 
 interface Country {
   name: string;
@@ -47,7 +47,7 @@ const COUNTRIES: Country[] = [
   styleUrls: ['./my-assets.component.css']
 })
 export class MyAssetsComponent implements OnInit {
-  public myAssets: ;
+  public myAssets;
   countries = COUNTRIES;
   rowData = [];
   constructor(private myAsset: MyAssetService) {}
