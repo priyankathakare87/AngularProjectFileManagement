@@ -2,14 +2,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MyAssetService } from '../../services/my-asset.service';
 import { MyAsset } from '../../model/myAsset';
 import { AgGridAngular } from 'ag-grid-angular';
-
+/*
 interface Country {
   name: string;
   flag: string;
   area: number;
   population: number;
 }
-/*
+
 const COUNTRIES: Country[] = [
   {
     name: 'Russia',
@@ -61,13 +61,7 @@ export class CancelComponent implements OnInit {
   public myAssets; // = assets;
 
   columnDefs = [
-    {
-      headerName: 'Asset Type',
-      field: 'type',
-      sortable: true,
-      filter: true,
-      checkboxSelection: true
-    },
+    { headerName: 'Asset Type', field: 'type', sortable: true, filter: true, checkboxSelection: true },
     { headerName: 'Model', field: 'model', sortable: true, filter: true },
     { headerName: 'Asset Number', field: 'no', sortable: true, filter: true },
     { headerName: 'Used By', field: 'useBy', sortable: true, filter: true }
