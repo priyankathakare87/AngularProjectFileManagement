@@ -15,7 +15,6 @@ import { AssetService } from '../../services/asset.service';
 })
 export class AssetReqComponent implements OnInit {
 
-  //public reason: String = "";
   public asset: Asset;
   public assets: Asset[];
   public message = null;
