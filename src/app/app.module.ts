@@ -31,7 +31,7 @@ import { CancelComponent } from './request/cancel/cancel.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
-import { MyAssetsComponent } from './my-assets/my-assets.component';
+
 
 @NgModule({
   declarations: [
@@ -50,7 +50,6 @@ import { MyAssetsComponent } from './my-assets/my-assets.component';
     NotificationComponent,
     HardsoftComponent,
     CancelComponent,
-    MyAssetsComponent
   ],
   imports: [
     NgbModule,

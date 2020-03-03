@@ -9,7 +9,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { HeaderComponent } from './header/header.component';
 import { HardsoftComponent } from './request/hardsoft/hardsoft.component';
 import { CancelComponent } from './request/cancel/cancel.component';
-import { MyAssetsComponent } from './my-assets/my-assets.component';
+
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'new-request', component: HeaderComponent },
   { path: 'hardsof', component: HardsoftComponent},
   { path: 'cancel', component: CancelComponent },
-  { path: 'my-assets', component: MyAssetsComponent }
+
 ];
 
 @NgModule({
