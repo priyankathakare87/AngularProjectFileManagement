@@ -20,8 +20,7 @@ div{
   width: 1444px;
 } */
 .in-h-image {
-  background: url('src\assets\images\keyboard.jpg') no-repeat;
-  height: 300px;
+  /* background: url('src\assets\images\keyboard.jpg') no-repeat; */
   background-size: cover;
 }
 

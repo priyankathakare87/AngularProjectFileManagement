@@ -31,6 +31,7 @@ import { CancelComponent } from './request/cancel/cancel.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
+import { SharedfolderAccessComponent } from './sharedfolder-access/sharedfolder-access.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { MatRadioModule } from '@angular/material/radio';
     NotificationComponent,
     HardsoftComponent,
     CancelComponent,
+    SharedfolderAccessComponent,
   ],
   imports: [
     NgbModule,

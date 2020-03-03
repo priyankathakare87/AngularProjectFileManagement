@@ -1,4 +1,4 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * 
+<!-- * * * * * * * * * * * * * * * * * * * * * * *
 *****------ Start of Template driven form ************
 
 <form (ngSubmit)="onSubmit()" #assetForm="ngForm">
@@ -6,31 +6,31 @@
       <div class="radio-cat">
           <input type="radio"
                  name="assetCat"
-                 #assetCat="ngModel" 
+                 #assetCat="ngModel"
                  [(ngModel)]="asset.assetCat"
                  value="hardware">Hardware
-           
+
           <input type="radio"
                  name="assetCat"
                  #assetCat="ngModel"
                  [(ngModel)]="asset.assetCat"
                  value="software">Software
-        </div>   
+        </div>
        <div *ngIf="assetCat.value == 'hardware'">
             Hardware
-       </div> 
-       
-    
+       </div>
+
+
     <div class="assetType">
           Asset Type
-          <select name="assetType" 
+          <select name="assetType"
                   required
                   #assetType="ngModel"
                   [(ngModel)]="asset.assetType">
               <option *ngFor='let hardware of hardwares'
               [ngValue]="hardware">{{ hardware }}</option>
-              
-          </select> 
+
+          </select>
         </div>
         <div *ngIf="assetType.touched && assetType.invalid">
           <div *ngIf="assetType.errors.required">
@@ -41,24 +41,24 @@
     <div>
       <input type="number"
                name="quantity"
-               required 
+               required
                placeholder="Quantity"
                #assetQuantity="ngModel"
                [(ngModel)]="asset.quantity">
-    </div>   
+    </div>
     <div *ngIf="!assetQuantity.valid">
         Quantity cant be blank.
     </div>
   <div>
       <input type="text"
            name="reason"
-           placeholder="reason" 
+           placeholder="reason"
            [(ngModel)]="asset.reason"
            >
   </div>
-  
+
   <button type="submit">Submit</button>
-  </div>         
+  </div>
 </form>
 
 value is {{ asset | json }}
@@ -74,25 +74,25 @@ value is {{ asset | json }}
                  formControlName="assetCat"
                  value="hardware"
                  (click)="selecthardwares()">Hardware
-           
+
           <input type="radio"
                  name="assetCat"
                  formControlName="assetCat"
                  value="software"
                  (click)="selectsoftwares()">Software
-        </div>   
+        </div>
        <div *ngIf="">
             Hardware
-       </div> 
-       
-    
+       </div>
+
+
     <div class="assetType">
           Asset Type
           <select formControlName="assetType">
               <option *ngFor='let assetcat of assetcats'
               [ngValue]="assetcat">{{ assetcat }}</option>
-              
-          </select> 
+
+          </select>
         </div>
         <div class="valid_assettype" *ngIf="assetType.invalid && assetType.touched">
             Select an asset Type
@@ -100,11 +100,11 @@ value is {{ asset | json }}
     <div>
       <input type="number"
                name="quantity"
-               required 
+               required
                placeholder="Quantity"
                formControlName="quantity"
                >
-    </div>   
+    </div>
     <div class="valid_quantity"
          *ngIf="quantity.invalid && quantity.touched">
           <div *ngIf="quantity.errors.required">
@@ -118,11 +118,11 @@ value is {{ asset | json }}
     <div *ngIf="!assetQuantity.valid">
         Quantity cant be blank.
     </div>
--->    
+-->
   <div>
       <input type="text"
            name="reason"
-           placeholder="reason" 
+           placeholder="reason"
            formControlName="reason"
            >
   </div>
@@ -135,20 +135,20 @@ value is {{ asset | json }}
             Minimum length should be more than 5
         </div>
 
-   </div> 
+   </div>
 
   <button type="submit">Submit</button>
-  
+
   <button type="button" (click)="resetForm()">Reset</button>
   <button type="button" (click)="displayall()">Show Assets</button>
-  </div>         
+  </div>
 </form>
 <table class="">
 <tr *ngFor='let asset of assets'>
   <td>{{ asset.assetCat | json }}</td>
   <td>{{ asset.assetType | json }}</td>
   <td>{{ asset.quantity | json }}</td>
-  <td>{{ asset.reason | json }}</td> 
+  <td>{{ asset.reason | json }}</td>
 </tr>
 </table>
 
