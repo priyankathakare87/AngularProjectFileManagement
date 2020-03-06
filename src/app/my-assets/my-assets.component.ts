@@ -1,4 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { PipeTransform } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
+import { FormControl } from '@angular/forms';
+
+import { MyAssetService } from '../services/my-asset.service';
+import { MyAsset } from '../model/myAsset';
+
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+
+
+
 
 @Component({
   selector: 'app-my-assets',
@@ -7,9 +19,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyAssetsComponent implements OnInit {
 
-  constructor() { }
+  public myAssets;// = assets;
+ 
+  constructor(private myAsset: MyAssetService) {}
 
   ngOnInit() {
-  }
 
+ 
+    this.myAsset.getMyAssets()
+             .subscribe(data => this.myAssets = data);
+ 
+  }
 }

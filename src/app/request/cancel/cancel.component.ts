@@ -2,41 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MyAssetService } from '../../services/my-asset.service';
 import { MyAsset } from '../../model/myAsset';
 import { AgGridAngular } from 'ag-grid-angular';
+import { ConditionPosition } from 'ag-grid-community/dist/lib/filter/provided/simpleFilter';
 
-interface Country {
-  name: string;
-  flag: string;
-  area: number;
-  population: number;
-}
-/*
-const COUNTRIES: Country[] = [
-  {
-    name: 'Russia',
-    flag: 'f/f3/Flag_of_Russia.svg',
-    area: 17075200,
-    population: 146989754
-  },
-  {
-    name: 'Canada',
-    flag: 'c/cf/Flag_of_Canada.svg',
-    area: 9976140,
-    population: 36624199
-  },
-  {
-    name: 'United States',
-    flag: 'a/a4/Flag_of_the_United_States.svg',
-    area: 9629091,
-    population: 324459463
-  },
-  {
-    name: 'China',
-    flag: 'f/fa/Flag_of_the_People%27s_Republic_of_China.svg',
-    area: 9596960,
-    population: 1409517397
-  }
-];
-*/
 
 const assets: MyAsset[] =
 [
@@ -61,13 +28,7 @@ export class CancelComponent implements OnInit {
   public myAssets; // = assets;
 
   columnDefs = [
-    {
-      headerName: 'Asset Type',
-      field: 'type',
-      sortable: true,
-      filter: true,
-      checkboxSelection: true
-    },
+    { headerName: 'Asset Type', field: 'type', sortable: true, filter: true, checkboxSelection: true },
     { headerName: 'Model', field: 'model', sortable: true, filter: true },
     { headerName: 'Asset Number', field: 'no', sortable: true, filter: true },
     { headerName: 'Used By', field: 'useBy', sortable: true, filter: true }
@@ -82,6 +43,7 @@ export class CancelComponent implements OnInit {
     //    .subscribe(data => this.myAssets = data);
 
     this.rowData = this.myAsset.getMyAssetsNormal();
+    //console.log(this.rowData);
     // console.log("data from node " + this.rowData + 'dsfsdfs');
   }
 

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AssetRequest } from '../../model/assetRequest';
+import { MyAssetService } from 'src/app/services/my-asset.service';
+import { AssetReqComponent } from 'src/app/asset/asset-req/asset-req.component';
+import { nullSafeIsEquivalent } from '@angular/compiler/src/output/output_ast';
+import { LoginService } from 'src/app/services/login.service';
 
 export interface user {
   value: string;
@@ -14,15 +19,30 @@ export interface user {
 })
 export class HardsoftComponent implements OnInit {
 
+  public message = "";
   users: user[] = [
     {value: 'self', viewValue: 'Self' },
     {value: 'vendor', viewValue: 'Vendor'},
     {value: 'auditor', viewValue: 'Auditors'}
   ];
 
+  public assetRequset : AssetRequest = {
+    reqNo : 'S1232',
+    reqBy: 'Amarendra',
+    reqRetflag : 'ret',
+    processId: 'software',
+    assetType: 'laptop',
+    quantity: 1, 
+    reason: 'sdada',
+    reqDate: null,
+    reqTime: '',
+    workflowId: 'd'
+      };
   public hardwares = [ 'Desktop', 'Monitor', 'Printer', 'Scanner', 'Laptop'];
   public softwares = [ 'SAP', 'Afsys', 'Danaos', 'Lotus Notes', 'MS Office'];
   public assets = this.hardwares.slice();
+
+  public userid: string;
 
   public hardsoftForm: FormGroup = new FormGroup({
     useBy: new FormControl( null, Validators.required),
@@ -32,11 +52,12 @@ export class HardsoftComponent implements OnInit {
     reason: new FormControl(null, [Validators.required, Validators.minLength(5)])
   });
 
-  constructor() { }
+  constructor(private myAsset : MyAssetService, private loginService: LoginService ) { }
 
   ngOnInit() {
     console.log(this.assets);
   }
+
 
   get useBy() { return this.hardsoftForm.get('useBy'); }
   get assetCat() { return this.hardsoftForm.get('assetCat'); }
@@ -47,4 +68,36 @@ export class HardsoftComponent implements OnInit {
   selecthardwares() { this.assets = this.hardwares.slice(); }
   selectsoftwares() { this.assets = this.softwares.slice(); }
 
+  
+onSubmit(){
+  var curr_date = new Date(); 
+  var today = curr_date.toLocaleDateString();
+  var time = curr_date.toLocaleTimeString();
+  this.assetRequset.reqNo = 'AT';
+  this.userid = this.loginService.getUserId();
+  this.assetRequset.reqBy = this.userid;
+  this.assetRequset.reqRetflag = 'req';
+  this.assetRequset.processId = 'hardsoft';
+  this.assetRequset.assetType = this.hardsoftForm.value.assetType;
+  this.assetRequset.quantity = this.hardsoftForm.value.quantity;
+  this.assetRequset.reason = this.hardsoftForm.value.reason;
+  this.assetRequset.reqDate = curr_date;
+  this.assetRequset.reqTime = time;
+  this.assetRequset.workflowId = 'A12345';
+
+  console.log(this.assetRequset);
+    
+  this.myAsset.postMyAsset(this.assetRequset).subscribe(
+    (data: AssetRequest) => { 
+      console.log('On Success')
+      this.message = "Request submitted successfully"
+      console.log(data);
+    },
+    (error: any) => {
+      console.log('on error')
+      this.message = "Error: " + error.statusText + error.message;
+      console.log(error);
+    }
+  );
+}  
 }

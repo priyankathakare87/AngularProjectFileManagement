@@ -32,6 +32,11 @@ import { AgGridModule } from 'ag-grid-angular';
 import { MatSelectModule } from '@angular/material/select';
 import { MatRadioModule } from '@angular/material/radio';
 import { MyAssetsComponent } from './my-assets/my-assets.component';
+import { CreatecrComponent } from './change-request/createcr/createcr.component';
+import { UatComponent } from './change-request/uat/uat.component';
+import { WorkflowComponent } from './workflow/workflow.component';
+import { MatTableModule } from '@angular/material';
+import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -50,7 +55,10 @@ import { MyAssetsComponent } from './my-assets/my-assets.component';
     NotificationComponent,
     HardsoftComponent,
     CancelComponent,
-    MyAssetsComponent
+    MyAssetsComponent,
+    CreatecrComponent,
+    UatComponent,
+    WorkflowComponent
   ],
   imports: [
     NgbModule,
@@ -74,8 +82,11 @@ import { MyAssetsComponent } from './my-assets/my-assets.component';
     AgGridModule.withComponents([]),
     MatSelectModule,
     MatRadioModule,
-  ],
-  providers: [AssetService, LoginService],
+    MatTableModule,
+      ],
+  providers: [
+    AssetService, LoginService,
+    ],
   bootstrap: [AppComponent]
 })
 

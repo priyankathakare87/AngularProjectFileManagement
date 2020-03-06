@@ -9,6 +9,11 @@ import { ProfileComponent } from './profile/profile.component';
 import { HeaderComponent } from './header/header.component';
 import { HardsoftComponent } from './request/hardsoft/hardsoft.component';
 import { CancelComponent } from './request/cancel/cancel.component';
+import { MyAssetsComponent } from './my-assets/my-assets.component';
+import { CreatecrComponent } from './change-request/createcr/createcr.component';
+import { UatComponent } from './change-request/uat/uat.component';
+import { WorkflowComponent } from './workflow/workflow.component';
+
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -18,7 +23,12 @@ const routes: Routes = [
   { path: 'assetreq', component: AssetReqComponent },
   { path: 'new-request', component: HeaderComponent },
   { path: 'hardsof', component: HardsoftComponent},
-  { path: 'cancel', component: CancelComponent }
+  { path: 'cancel', component: CancelComponent },
+  { path: 'my-assets', component: MyAssetsComponent },
+  { path: 'create-cr', component: CreatecrComponent},
+  { path: "uat", component:UatComponent},
+  { path: "workflow", component: WorkflowComponent}
+
 ];
 
 @NgModule({

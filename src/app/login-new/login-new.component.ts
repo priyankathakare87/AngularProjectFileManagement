@@ -15,6 +15,7 @@ export class LoginNewComponent implements OnInit {
   loginForm: FormGroup;
   userData: EmployeeData;
   credentials: Login;
+  public authMessage: string;
   constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder, private loginService: LoginService) { }
 
   ngOnInit() {
@@ -24,9 +25,29 @@ export class LoginNewComponent implements OnInit {
   }
 
   login() {
+    
+    this.loginService.setUserId(this.loginForm.value.user);
     this.credentials = Object.assign({}, this.loginForm.value);
     this.loginService.getAuthentication(this.credentials);
-    this.router.navigate(['profile']);
-  }
+    this.loginService.userAuthentication(this.credentials);
+    //this.router.navigate(['profile']);
+    /*this.loginService.userAuthentication(this.credentials)
+    .subscribe(message => {
+            this.authMessage = message
+            console.log ("message from service" + this.authMessage);
+    }
+    );
+    */
+    
+    /*if (this.authMessage == 'success'){
+      this.router.navigate(['profile']);
+    }
+    else {
+      window.alert ("Invalid userid or password");
+    }
+    */
+
+   }
+ 
 
 }
