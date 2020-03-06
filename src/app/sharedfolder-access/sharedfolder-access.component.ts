@@ -16,7 +16,7 @@ export class SharedfolderAccessComponent implements OnInit {
     accesstype = new FormControl();
     accesstypeList: string[] = ['Read Only', 'Read / Write both'];
     public fieldArray: Array<any> = [];
-    private newAttribute: any = {};
+    public newAttribute: any = {};
 
     addFieldValue() {
         this.fieldArray.push(this.newAttribute);
@@ -27,7 +27,12 @@ export class SharedfolderAccessComponent implements OnInit {
     deleteFieldValue(index) {
         this.fieldArray.splice(index, 1);
     }
+    self()
+    {}
+    others(){
 
+    }
+    onSubmit(){ }
     constructor() { }
 
   ngOnInit() {
