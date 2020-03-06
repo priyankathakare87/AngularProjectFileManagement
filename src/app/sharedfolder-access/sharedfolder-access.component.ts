@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+export interface user {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-sharedfolder-access',
@@ -7,7 +13,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SharedfolderAccessComponent implements OnInit {
 
-  constructor() { }
+    accesstype = new FormControl();
+    accesstypeList: string[] = ['Read Only', 'Read / Write both'];
+    public fieldArray: Array<any> = [];
+    private newAttribute: any = {};
+
+    addFieldValue() {
+        this.fieldArray.push(this.newAttribute);
+        this.newAttribute = {};
+
+    }
+
+    deleteFieldValue(index) {
+        this.fieldArray.splice(index, 1);
+    }
+
+    constructor() { }
 
   ngOnInit() {
   }

@@ -10,8 +10,8 @@
   margin-left: 30px;
 }
 
-div{
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+.ngbtab{
+  font-family: Verdana;
   font-size: smaller;
 }
 /* img{
@@ -22,5 +22,13 @@ div{
 .in-h-image {
   /* background: url('src\assets\images\keyboard.jpg') no-repeat; */
   background-size: cover;
+}
+
+.test {
+  margin-left: 25%;
+  margin-right:25%;
+  width: 100%;
+  font-family: Verdana;
+
 }
 
