@@ -14,21 +14,20 @@ import { AssetService } from '../../services/asset.service';
   styleUrls: ['./asset-req.component.css']
 })
 export class AssetReqComponent implements OnInit {
- 
-  //public reason: String = "";
+
   public asset: Asset;
   public assets: Asset[];
   public message = null;
-  public hardwares = ['Desktop', 'Monitor','Printer','Scanner','Laptop']; 
-  public softwares = [ 'SAP', 'Afsys', 'Danaos', 'Lotus Notes', 'MS Office'] 
+  public hardwares = ['Desktop', 'Monitor','Printer','Scanner','Laptop'];
+  public softwares = [ 'SAP', 'Afsys', 'Danaos', 'Lotus Notes', 'MS Office']
   public assetcats = this.hardwares.slice();
 
   public assetForm: FormGroup = new FormGroup({
     assetCat: new FormControl(null, Validators.nullValidator),
     assetType: new FormControl(null, Validators.required),
-    quantity: new FormControl(0, [Validators.required,Validators.min(1)]),
-    reason: new FormControl(null,[Validators.required, Validators.minLength(5)])
-  })
+    quantity: new FormControl(0, [Validators.required, Validators.min(1)]),
+    reason: new FormControl(null, [Validators.required, Validators.minLength(5)])
+  });
 
 
   constructor( private assetService: AssetService) { }
@@ -51,12 +50,12 @@ export class AssetReqComponent implements OnInit {
 
   onSubmit(){
     this.asset = Object.assign({}, this.assetForm.value);
-    console.log("Assset created : ", this.asset); 
-    
+    console.log("Assset created : ", this.asset);
+
     this.assetService.createAsset(this.asset);
 
     /*this.assetService.createAssetObservable(this.asset)
-        .subscribe( (result: any) => { 
+        .subscribe( (result: any) => {
           this.message = result.msg;
         },(err) => {
           this.message = err.error.msg;
@@ -73,9 +72,9 @@ resetForm(){
 selectassets(){
   console.log("value passed : " ,this.assetForm.value.assetCat);
   /*console.log(, assetcat.toString);
-  
+
   if(assetcat == 'hardware'){
-    this.assetcats = this.hardwares; 
+    this.assetcats = this.hardwares;
   }
  else if(assetcat == 'software') {
     this.assetcats = this.softwares;
@@ -84,9 +83,9 @@ selectassets(){
 */
   if ( this.assetForm.value.assetCat == 'hardware'){
 
-    this.assetcats = this.hardwares.slice(); 
+    this.assetcats = this.hardwares.slice();
   }
-  else if(this.assetForm.value.assetCat == 'software') {
+  else if (this.assetForm.value.assetCat == 'software') {
     this.assetcats = this.softwares.slice();
   }
   console.log(this.assetcats);
@@ -94,16 +93,20 @@ selectassets(){
 
 selecthardwares(){
 
-  this.assetcats = this.hardwares.slice(); 
+  this.assetcats = this.hardwares.slice();
 }
 
 selectsoftwares(){
 
-  this.assetcats = this.softwares.slice(); 
+  this.assetcats = this.softwares.slice();
 }
 
 displayall(){
 this.assets = this.assetService.getAsset();
-console.log("from service : ", this.assets);
+console.log('from service : ', this.assets);
+}
+
+newfunction() {
+
 }
 }
