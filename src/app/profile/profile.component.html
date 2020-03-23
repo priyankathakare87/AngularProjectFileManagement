@@ -3,25 +3,16 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<div class="container emp-profile">
+<div class="container emp-profile" *ngIf="userData">
             <form>
-                <div class="row">
-                    <!-- <div class="col-md-4">
-                        <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-                            <div class="file btn btn-lg btn-primary">
-                                Change Photo
-                                <input type="file" name="file"/>
-                            </div>
-                        </div>
-                    </div> -->
+                <!-- <div class="row">
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                        Priyanka Thakare
+                                       {{userData.Name}}
                                     </h5>
                                     <h6>
-                                        Manager IT ERP
+                                        {{userData.Name}}
                                     </h6>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
@@ -30,25 +21,25 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="row">
+                </div> -->
+                 <div class="row">
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <div class="row">
+                                        <!-- <div class="row">
                                             <div class="col-md-6">
                                                 <label>Employee Code</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>SS004679</p>
+                                                <p>{{userData.Name}}</p>
                                             </div>
-                                        </div>
+                                        </div>  -->
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>Name</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{ this.userData.Name }}</p>
+                                                <p>{{userData.Name}}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -56,7 +47,7 @@
                                                 <label>Employee Type</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{ this.userData.Employee_type }}</p>
+                                                <p>{{userData.Employee_type }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -64,7 +55,7 @@
                                                 <label>Designation</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{ this.userData.Designation }}</p>
+                                                <p>{{userData.Designation }}</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -72,12 +63,12 @@
                                                 <label>Department</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>{{ this.userData.Department }}</p>
+                                                <p>{{userData.Department }}</p>
                                             </div>
                                         </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
             </form>
         </div>

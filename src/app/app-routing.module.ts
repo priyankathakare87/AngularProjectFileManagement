@@ -13,6 +13,7 @@ import { MyAssetsComponent } from './my-assets/my-assets.component';
 import { CreatecrComponent } from './change-request/createcr/createcr.component';
 import { UatComponent } from './change-request/uat/uat.component';
 import { WorkflowComponent } from './workflow/workflow.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'new-request', component: HeaderComponent },
   { path: 'hardsof', component: HardsoftComponent},
   { path: 'cancel', component: CancelComponent },
-  { path: 'my-assets', component: MyAssetsComponent },
+  { path: 'my-assets', component: MyAssetsComponent},
+  //{ path: 'my-assets', component: MyAssetsComponent, canActivate: [AuthGuard] },
   { path: 'create-cr', component: CreatecrComponent},
   { path: "uat", component:UatComponent},
   { path: "workflow", component: WorkflowComponent}

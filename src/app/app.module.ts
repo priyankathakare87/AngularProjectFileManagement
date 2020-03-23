@@ -36,7 +36,10 @@ import { CreatecrComponent } from './change-request/createcr/createcr.component'
 import { UatComponent } from './change-request/uat/uat.component';
 import { WorkflowComponent } from './workflow/workflow.component';
 import { MatTableModule } from '@angular/material';
-import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material';
+import { WorkFlowDialogComponent } from './workflow/workflow-dialog.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,8 @@ import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog
     MyAssetsComponent,
     CreatecrComponent,
     UatComponent,
-    WorkflowComponent
+    WorkflowComponent,
+    WorkFlowDialogComponent
   ],
   imports: [
     NgbModule,
@@ -83,11 +87,15 @@ import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog
     MatSelectModule,
     MatRadioModule,
     MatTableModule,
+    MatDialogModule,
+    MatCheckboxModule,
       ],
   providers: [
-    AssetService, LoginService,
+    AssetService, AuthGuard, LoginService,
     ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [WorkFlowDialogComponent]
+
 })
 
 export class AppModule { }

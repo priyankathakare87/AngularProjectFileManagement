@@ -12,7 +12,7 @@ import { observable, Observable} from 'rxjs';
 
 export class MyAssetService {
 
-  private url = 'http://10.20.33.79:3000/angular_myAsset';
+  private url = 'http://10.20.11.46:3000/angular_myAsset1';
   private urlpost = 'http://10.20.33.79:3000/angular_postAssetRequest';
   public abc = [];
   myassetnormal: any;

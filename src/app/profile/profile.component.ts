@@ -9,13 +9,17 @@ import { EmployeeData } from '../model/employee-data';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  userData: EmployeeData;
+  public userData: EmployeeData;
   constructor( private route: ActivatedRoute, private loginService: LoginService) { }
 
   ngOnInit() {
-    this.loginService.$loggedInUserData
-    .subscribe((resposedata: EmployeeData) => {
-      this.userData = resposedata;
-    });
+    // this.loginService.$loggedInUserData
+    // .subscribe((resposedata: EmployeeData) => {
+    //   this.userData = resposedata;
+    // });
+
+     this.userData = this.loginService.getUser();
+    // console.log("profile",this.userData)
+
   }
 }

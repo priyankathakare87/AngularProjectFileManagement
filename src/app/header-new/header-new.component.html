@@ -1,5 +1,9 @@
 
-<div class="topline"></div>
+<div class="topline">
+  <div *ngIf="login.isLoggedin()" class="welcome">
+    <p> {{ empname }}  </p>
+  </div>
+</div>
 <div class="navcontents">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" [routerLink]="['/home']"><img src="{{ imageSrc }}"></a>
@@ -58,13 +62,19 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="terms" routerLinkActive="active">Reports</a>
       </li>
+      
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span></a></li>
       </ul>
-  </div>
-  <app-login-new></app-login-new>
+     </div>
+     <a class="nav-link" style="cursor: pointer;" *ngIf="login.isLoggedin()" (click)="logoutUser()">Logout</a>   
+  <app-login-new  *ngIf="!login.isLoggedin()"></app-login-new>
+  
   <app-notification></app-notification>
+
+
+  
 </nav>
 </div>
 <!-- <div class="container">
