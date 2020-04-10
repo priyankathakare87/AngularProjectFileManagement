@@ -42,6 +42,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AuthGuard } from './auth.guard';
 import { SharedfolderAccessComponent } from './sharedfolder-access/sharedfolder-access.component';
 import { SharedfolderComponent } from './sharedfolder/sharedfolder.component';
+import { WebmailAccessComponent } from './webmail-access/webmail-access.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { SharedfolderComponent } from './sharedfolder/sharedfolder.component';
     WorkflowComponent,
     WorkFlowDialogComponent,
     SharedfolderAccessComponent,
-    SharedfolderComponent
+    SharedfolderComponent,
+    WebmailAccessComponent
   ],
   imports: [
     NgbModule,

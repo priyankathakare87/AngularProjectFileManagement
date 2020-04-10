@@ -1,0 +1,9 @@
+<p>Request for Webmail Access</p>
+<form (ngSubmit)="onSubmit()" [formGroup]="webmailaccessform">
+<div>
+    <mat-form-field>
+        <input matInput placeholder="Exisisting Email ID" formControlName="currentEmailID">
+    </mat-form-field>
+  </div>
+  <button mat-raised-button type="submit" color="primary">Submit</button>
+</form>
