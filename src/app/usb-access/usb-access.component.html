@@ -1,1 +1,13 @@
-<p>usb-access works!</p>
+<p>Request for USB Access</p>
+<form>
+   <div>
+    <mat-form-field>
+        <mat-label>Access Required For</mat-label>
+        <mat-select [formControl]="accessfor" multiple>
+          <mat-option *ngFor="let access of accessList" [value]="access">{{access}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+</form>
+
+<h5>{{ message }}</h5>

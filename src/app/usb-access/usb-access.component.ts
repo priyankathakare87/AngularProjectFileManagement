@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-usb-access',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./usb-access.component.css']
 })
 export class UsbAccessComponent implements OnInit {
-
+  accessfor = new FormControl();
+  accessList: string[] = ['USB', 'DVD'];
   constructor() { }
 
   ngOnInit() {
