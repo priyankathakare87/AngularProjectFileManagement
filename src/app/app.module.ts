@@ -43,6 +43,7 @@ import { AuthGuard } from './auth.guard';
 import { SharedfolderAccessComponent } from './sharedfolder-access/sharedfolder-access.component';
 import { SharedfolderComponent } from './sharedfolder/sharedfolder.component';
 import { WebmailAccessComponent } from './webmail-access/webmail-access.component';
+import { UsbAccessComponent } from './usb-access/usb-access.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { WebmailAccessComponent } from './webmail-access/webmail-access.componen
     WorkFlowDialogComponent,
     SharedfolderAccessComponent,
     SharedfolderComponent,
-    WebmailAccessComponent
+    WebmailAccessComponent,
+    UsbAccessComponent
   ],
   imports: [
     NgbModule,
