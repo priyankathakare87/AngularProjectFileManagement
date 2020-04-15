@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-usb-access',
@@ -7,11 +7,20 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./usb-access.component.css']
 })
 export class UsbAccessComponent implements OnInit {
-  accessfor = new FormControl();
   accessList: string[] = ['USB', 'DVD'];
+
+  usbaccessform: FormGroup = new FormGroup({
+    accessfor: new FormControl(),
+    date: new FormControl(new Date()),
+    reason: new FormControl(),
+  });
+
   constructor() { }
 
   ngOnInit() {
   }
-
+  onSubmit(){
+    // TODO: Use EventEmitter with form value
+    console.warn(this.usbaccessform.value);
+  }
 }
