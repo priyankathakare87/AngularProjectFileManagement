@@ -20,7 +20,7 @@ export interface user {
 export class HardsoftComponent implements OnInit {
 
   public message = "";
-  1: user[] = [
+  users: user[] = [
     {value: 'self', viewValue: 'Self' },
     {value: 'vendor', viewValue: 'Vendor'},
     {value: 'auditor', viewValue: 'Auditors'}

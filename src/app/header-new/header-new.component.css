@@ -14,6 +14,8 @@
 }
 .welcome{
   text-align: justify;
-  
-    
+}
+.contentalign{
+  align-content: center;
+  margin-left: 500px;
 }
