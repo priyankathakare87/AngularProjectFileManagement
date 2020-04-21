@@ -70,8 +70,8 @@ import { UsbAccessComponent } from './usb-access/usb-access.component';
     SharedfolderAccessComponent,
     SharedfolderComponent,
     WebmailAccessComponent,
-    UsbAccessComponent
-  ],
+    UsbAccessComponent,
+    ],
   imports: [
     NgbModule,
     BrowserModule,
@@ -99,7 +99,7 @@ import { UsbAccessComponent } from './usb-access/usb-access.component';
     MatTableModule,
     MatDialogModule,
     MatCheckboxModule,
-      ],
+  ],
   providers: [
     AssetService, AuthGuard, LoginService,
     ],
