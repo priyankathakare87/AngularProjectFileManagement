@@ -39,9 +39,18 @@ export class WebmailAccessComponent implements OnInit {
       return;
     }
     else{
-      // TODO: Use EventEmitter with form value
-    console.warn(this.webmailaccessForm.value);
-    alert('Success!')
+      var date = new Date();
+      this.webmailAccessReq.reqNo = 'WA1';
+      this.webmailAccessReq.reqSrNo = 12;
+      this.webmailAccessReq.processId = 'W12';
+      this.webmailAccessReq.reqBy = '4679'; //to be taken from user emp code logged in
+      this.webmailAccessReq.emailId = this.webmailaccessForm.value.currentEmailID;
+      this.webmailAccessReq.reqDate = date;
+      this.webmailAccessReq.reqTime = date.toLocaleTimeString();
+      this.webmailAccessReq.workflowId = 'WF02';
+
+      console.warn(this.webmailAccessReq);
+      alert('Success!')
     }
     
   }
