@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl} from '@angular/forms';
-import { addListener } from 'cluster';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
+
 interface User {
   value: string;
   viewValue: string;
@@ -33,12 +33,12 @@ export class SharedfolderComponent implements OnInit {
   ngOnInit() {
   }
 
-  sharedfolderForm: FormGroup = new FormGroup({
-    usedBy: new FormControl(),
-    ad: new FormControl(),
-    typeofAccess: new FormControl(),
-    sharedfolderName: new FormControl(),
-    reason: new FormControl(),
+  sharedfolderForm = new FormGroup({
+    usedBy: new FormControl('', Validators.required),
+    ad: new FormControl('', [Validators.required, Validators.pattern('^\\d*$')]),
+    typeofAccess: new FormControl('', Validators.required),
+    sharedfolderName: new FormControl('', Validators.required),
+    reason: new FormControl('', Validators.required),
   }); 
   
   onSubmit(){
@@ -47,6 +47,5 @@ export class SharedfolderComponent implements OnInit {
   }
   change(){
     console.log('in change');
-    
   }
 }
