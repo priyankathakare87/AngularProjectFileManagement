@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { SharedfolderRequest } from '../model/sharedfolder-request';
+import { SharedfolderService } from '../services/sharedfolder.service';
 
 interface User {
   value: string;
@@ -27,8 +29,9 @@ export class SharedfolderComponent implements OnInit {
     {value: 1, viewValue: 'Read Only'},
     {value: 2, viewValue: 'Read / Write'}
   ];
-
-  constructor() { }
+  private sharedfolderaccessreq : SharedfolderRequest;
+  message= '';
+  constructor(private sharedfolderaccessservice : SharedfolderService) { }
 
   ngOnInit() {
   }
@@ -42,7 +45,36 @@ export class SharedfolderComponent implements OnInit {
   }); 
   
   onSubmit(){
-    // TODO: Use EventEmitter with form value
+    if(this.sharedfolderForm.invalid){
+      return;
+    }
+    else{
+      var date = new Date();
+      this.sharedfolderaccessreq.reqNo = '';
+      this.sharedfolderaccessreq.reqSrNo = 0;
+      this.sharedfolderaccessreq.processId= '';
+      this.sharedfolderaccessreq.reqBy= '';
+      this.sharedfolderaccessreq.useBy= '';
+      this.sharedfolderaccessreq.userAd= this.sharedfolderForm.value.ad;
+      this.sharedfolderaccessreq.accessType= this.sharedfolderForm.value.typeofAccess;
+      this.sharedfolderaccessreq.folder_name= this.sharedfolderForm.value.sharedfolderName;
+      this.sharedfolderaccessreq.reason= this.sharedfolderForm.value.reason;
+      this.sharedfolderaccessreq.reqDate= date;
+      this.sharedfolderaccessreq.reqTime = date.toLocaleTimeString();
+      this.sharedfolderaccessreq.workflowId = '';
+      this.sharedfolderaccessservice.postSharedFolderAccessReq(this.sharedfolderaccessreq).subscribe(
+        (data: SharedfolderRequest) => { 
+          console.log('On Success')
+          this.message = "Request submitted successfully"
+          console.log(data);
+        },
+        (error: any) => {
+          console.log('on error')
+          this.message = "Error: " + error.statusText + error.message;
+          console.log(error);
+        }
+      );
+    }
     console.warn(this.sharedfolderForm.value);
   }
   change(){

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UsbRequest } from '../model/usb-request';
+import { UsbaccessService } from '../services/usbaccess.service';
 
 @Component({
   selector: 'app-usb-access',
@@ -15,8 +17,10 @@ export class UsbAccessComponent implements OnInit {
   });
 
   accessList: string[] = ['USB', 'DVD'];
+  usbAccessReq : UsbRequest;
+  message = '';
 
-  constructor() { }
+  constructor(private usbaccessserviceobj : UsbaccessService) { }
 
   ngOnInit() {
   }
@@ -30,7 +34,35 @@ export class UsbAccessComponent implements OnInit {
   }
 
   onSubmit(){
-    // TODO: Use EventEmitter with form value
+    if(this.usbaccessForm.invalid){
+      return;
+    }
+    else{
+      var date = new Date();
+      this.usbAccessReq.reqNo = '';
+      this.usbAccessReq.reqSrNo = 0;
+      this.usbAccessReq.processId= '';
+      this.usbAccessReq.reqBy= '';
+      this.usbAccessReq.accessType= this.usbaccessForm.value.accessfor;
+      this.usbAccessReq.accessDate = this.usbaccessForm.value.datepick;
+      this.usbAccessReq.noofDays= 1;
+      this.usbAccessReq.reqDate= date;
+      this.usbAccessReq.reqTime = date.toLocaleTimeString();
+      this.usbAccessReq.workflowId = '';
+
+      this.usbaccessserviceobj.postUsbAccessReq(this.usbAccessReq).subscribe(
+        (data: UsbRequest) => { 
+          console.log('On Success')
+          this.message = "Request submitted successfully"
+          console.log(data);
+        },
+        (error: any) => {
+          console.log('on error')
+          this.message = "Error: " + error.statusText + error.message;
+          console.log(error);
+        }
+      );
+    }
     console.warn(this.usbaccessForm.value);
   }
 }

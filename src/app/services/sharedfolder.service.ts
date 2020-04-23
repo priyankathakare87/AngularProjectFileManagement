@@ -1,9 +1,18 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/internal/Observable';
+import { SharedfolderRequest } from '../model/sharedfolder-request';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedfolderService {
 
-  constructor() { }
+  private url = 'http://10.20.11.46:3000/post_sharedfolderaccessreq';
+
+  constructor(private http: HttpClient) { }
+
+  postSharedFolderAccessReq(sharedfolderreqobj: SharedfolderRequest): Observable<SharedfolderRequest>  {
+    return this.http.post<SharedfolderRequest>(this.url, sharedfolderreqobj);
+  } 
 }

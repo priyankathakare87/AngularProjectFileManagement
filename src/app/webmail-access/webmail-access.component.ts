@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WebmailRequest } from '../model/webmail-request';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
+import { WebmailaccessService } from '../services/webmailaccess.service';
 
 @Component({
   selector: 'app-webmail-access',
@@ -14,22 +15,13 @@ export class WebmailAccessComponent implements OnInit {
   });
   
   formsubmitted = false;
-
-  constructor() { }
+  message = '';
+  constructor(private webmailAccessService: WebmailaccessService) { }
 
   ngOnInit() {
   }
 
-  public webmailAccessReq: WebmailRequest = {
-    reqNo : 'WA1',
-    reqSrNo: 12,
-    processId: 'W32',
-    reqBy: '4679',
-    emailId: 'priyanka.thakare@sci.co.in',
-    reqDate: null,
-    reqTime: null,
-    workflowId: 'abc123'
-  };
+  public webmailAccessReq: WebmailRequest;
   
   get f(){ return this.webmailaccessForm.controls; }
 
@@ -40,15 +32,27 @@ export class WebmailAccessComponent implements OnInit {
     }
     else{
       var date = new Date();
-      this.webmailAccessReq.reqNo = 'WA1';
-      this.webmailAccessReq.reqSrNo = 12;
-      this.webmailAccessReq.processId = 'W12';
-      this.webmailAccessReq.reqBy = '4679'; //to be taken from user emp code logged in
+      this.webmailAccessReq.reqNo = '';
+      this.webmailAccessReq.reqSrNo = 0;
+      this.webmailAccessReq.processId = '';
+      this.webmailAccessReq.reqBy = ''; //to be taken from user emp code logged in
       this.webmailAccessReq.emailId = this.webmailaccessForm.value.currentEmailID;
       this.webmailAccessReq.reqDate = date;
       this.webmailAccessReq.reqTime = date.toLocaleTimeString();
-      this.webmailAccessReq.workflowId = 'WF02';
-
+      this.webmailAccessReq.workflowId = '';
+      
+      this.webmailAccessService.postWebmailReq(this.webmailAccessReq).subscribe(
+        (data: WebmailRequest) => { 
+          console.log('On Success')
+          this.message = "Request submitted successfully"
+          console.log(data);
+        },
+        (error: any) => {
+          console.log('on error')
+          this.message = "Error: " + error.statusText + error.message;
+          console.log(error);
+        }
+      );
       console.warn(this.webmailAccessReq);
       alert('Success!')
     }
