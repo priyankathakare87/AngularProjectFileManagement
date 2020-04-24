@@ -5,6 +5,7 @@ import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule, MatCardModule, MatButtonModule, MatToolbarModule, MatExpansionModule, MatMenuModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { MainNavComponent } from './main-nav/main-nav.component';
+import { MatTabsModule } from '@angular/material/tabs';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -44,7 +45,7 @@ import { SharedfolderAccessComponent } from './sharedfolder-access/sharedfolder-
 import { SharedfolderComponent } from './sharedfolder/sharedfolder.component';
 import { WebmailAccessComponent } from './webmail-access/webmail-access.component';
 import { UsbAccessComponent } from './usb-access/usb-access.component';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,6 +81,7 @@ import { UsbAccessComponent } from './usb-access/usb-access.component';
     MatCardModule,
     MatButtonModule,
     MatToolbarModule,
+    MatTabsModule,
     MatExpansionModule,
     LayoutModule,
     MatSidenavModule,
@@ -99,6 +101,7 @@ import { UsbAccessComponent } from './usb-access/usb-access.component';
     MatTableModule,
     MatDialogModule,
     MatCheckboxModule,
+    FlexLayoutModule
   ],
   providers: [
     AssetService, AuthGuard, LoginService,

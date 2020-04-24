@@ -1,11 +1,9 @@
 <!-- <div>
   <img src="assets/images/asset-request.jpg">
 </div> -->
-<div class="inner-header in-h-image">
-</div>
 <br>
 <div>
-<ngb-tabset [justify]="currentJustify">
+<!-- <ngb-tabset [justify]="currentJustify">
   <ngb-tab>
     <ng-template ngbTabTitle><b>Software / Hardware</b></ng-template>
     <ng-template ngbTabContent>
@@ -13,7 +11,7 @@
     </ng-template>
   </ngb-tab>
   <ngb-tab>
-    <ng-template ngbTabTitle><b>Share Folder Access</b></ng-template>
+    <ng-template ngbTabTitle><b>Shared Folder Access</b></ng-template>
     <ng-template ngbTabContent>
       <app-sharedfolder></app-sharedfolder>
     </ng-template>
@@ -30,22 +28,13 @@
         <app-webmail-access></app-webmail-access>
       </ng-template>
     </ngb-tab>
-</ngb-tabset>
+</ngb-tabset> -->
+
+<mat-tab-group animationDuration="0ms" mat-align-tabs="center">
+  <mat-tab label="Software / Hardware"><app-hardsoft></app-hardsoft></mat-tab>
+  <mat-tab label="Shared Folder Access"><app-sharedfolder></app-sharedfolder></mat-tab>
+  <mat-tab label="USB/Pen Drive Access"><app-usb-access></app-usb-access></mat-tab>
+  <mat-tab label="Webmail Access"><app-webmail-access></app-webmail-access></mat-tab>
+</mat-tab-group>
+
 </div>
-<!-- <div class="btn-group btn-group-toggle" ngbRadioGroup [(ngModel)]="currentJustify">
-  <label ngbButtonLabel class="btn-outline-primary btn-sm">
-    <input ngbButton type="radio" value="start">Start
-  </label>
-  <label ngbButtonLabel class="btn-outline-primary btn-sm">
-    <input ngbButton type="radio" value="center">Center
-  </label>
-  <label ngbButtonLabel class="btn-outline-primary btn-sm">
-    <input ngbButton type="radio" value="end">End
-  </label>
-  <label ngbButtonLabel class="btn-outline-primary btn-sm">
-    <input ngbButton type="radio" value="fill">Fill
-  </label>
-  <label ngbButtonLabel class="btn-outline-primary btn-sm">
-    <input ngbButton type="radio" value="justified">Justified
-  </label>
-</div> -->

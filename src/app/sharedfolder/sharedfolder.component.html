@@ -1,7 +1,7 @@
-<div class="contentalign">
+<section>
   <br>
-<p>Request for Shared Folder Access</p>
-<form (ngSubmit)="onSubmit()" [formGroup]="sharedfolderForm">
+<form (ngSubmit)="onSubmit()" [formGroup]="sharedfolderForm" fxLayout="column" fxLayoutAlign="center center">
+  <p>Request for Shared Folder Access</p>
 <div>
     <mat-form-field>
         <mat-label>To be used by</mat-label>
@@ -40,6 +40,8 @@
             formControlName="reason"></textarea>
     </mat-form-field>
 </div>
-  <button mat-raised-button type="submit" color="primary">Submit</button>
-</form>
+<div>
+  <button mat-raised-button type="submit" [disabled]="!sharedfolderForm.valid" color="primary">Submit</button>
 </div>
+</form>
+</section>

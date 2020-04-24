@@ -1,76 +1,43 @@
 <form (ngSubmit)="onSubmit()" [formGroup]="createcrForm" >
-<div class="form-data">
-<div >
+    <br>
+<div fxLayout fxLayoutAlign="center" fxLayoutGap="100px">
+<div>
     <mat-form-field>
-        <input 
-            matInput
-            placeholder="SolMan Ticket"
-            type="number"
-            formControlName="ticket">
-    </mat-form-field>
+        <input matInput placeholder="SolMan Ticket No." type="number" formControlName="ticket">
+    </mat-form-field>&nbsp;&nbsp;
     <button mat-mini-fab type="button" color="primary">Get</button>
 </div>
-<div  class="solman-data">
-    <mat-form-field >
-      <input 
-          matInput
-          type="text"
-          placeholder="Component"
-          Value="Finance"
-          readonly="true"
-          formControlName="component">
-      </mat-form-field>
-          
-      <mat-form-field>   
-      <input
-          matInput
-          type="text"
-          placeholder="Priority"
-          Value="Very High"
-          readonly="true"
-          formControlName="priority">
-      </mat-form-field>
-      <mat-form-field>   
-        <input
-            matInput
-            type="text"
-            placeholder="Raised On"
-            Value="01.Jan.2020"
-            readonly="true"
-            formControlName="raisedOn">
-        </mat-form-field>
-  </div>
+<div>
+    <mat-form-field>
+        <!-- <input matInput type="text" placeholder="Component" Value="Finance" readonly="true" formControlName="component"> -->
+        <mat-label>Component</mat-label>
+        <input matInput disabled value="Finance" formControlName="component">
+    </mat-form-field>
+    <mat-form-field>   
+        <!-- <input matInput type="text" placeholder="Priority" Value="Very High" readonly="true" formControlName="priority"> -->
+        <mat-label>Priority</mat-label>
+        <input matInput disabled value="Very High" formControlName="priority">
+    </mat-form-field>
+    <mat-form-field>
+        <!-- <input matInput type="text" placeholder="Raised On" Value="01.Jan.2020" readonly="true" formControlName="raisedOn"> -->
+        <mat-label>Raised On</mat-label>
+        <input matInput disabled value="01.Jan.2020" formControlName="raisedOn">
+    </mat-form-field>
+</div>
 </div>
 
 <div class="cr-data">
-   
-    <input type="radio"
-           name="crType"
-           formControlName="crType"
-           value="cr">Change Request
-    <input type="radio"
-           name="crType"
-           formControlName="crType"
-           value="bug">Bug Fixing       
-  
+    <input type="radio" name="crType" formControlName="crType" value="cr">Change Request
+    <input type="radio" name="crType" formControlName="crType" value="bug">Bug Fixing       
     <mat-form-field>
-        <textarea 
-            matInput
-            placeholder="Existing Process"
-            formControlName="existingProcess">
-        </textarea>
+        <textarea matInput placeholder="Existing Process" formControlName="existingProcess"></textarea>
     </mat-form-field>
-  
     <mat-form-field>
-        <textarea 
-            matInput
-            placeholder="Desired Process"
-            formControlName="desiredProcess">
-        </textarea>
+        <textarea matInput placeholder="Desired Process" formControlName="desiredProcess"></textarea>
     </mat-form-field>
 <div>
-<button mat-raised-button type="submit" color="primary">Submit</button> 
-<button mat-raised-button type="reset" color="warn">Reset</button> 
+    <button mat-raised-button type="submit" color="primary">Submit</button> 
+    <button mat-raised-button type="reset" color="warn">Reset</button> 
 </div>
 </div>
 
