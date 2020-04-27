@@ -19,10 +19,11 @@ export class UsbAccessComponent implements OnInit {
   accessList: string[] = ['USB', 'DVD'];
   usbAccessReq : UsbRequest;
   message = '';
-
+  minDate;
   constructor(private usbaccessserviceobj : UsbaccessService) { }
 
   ngOnInit() {
+    this.minDate=new Date();
   }
 
   /* Conver date object to string */
