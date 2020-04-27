@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WebmailRequest } from '../model/webmail-request';
 import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { WebmailaccessService } from '../services/webmailaccess.service';
+import { PostResponse } from '../model/post-response';
 
 @Component({
   selector: 'app-webmail-access',
@@ -16,13 +17,12 @@ export class WebmailAccessComponent implements OnInit {
   
   formsubmitted = false;
   message = '';
+  respMessage = '';
+  date = new Date();
+  public webmailAccessReq: WebmailRequest;
   constructor(private webmailAccessService: WebmailaccessService) { }
-
   ngOnInit() {
   }
-
-  public webmailAccessReq: WebmailRequest;
-  
   get f(){ return this.webmailaccessForm.controls; }
 
   onSubmit() {
@@ -30,32 +30,28 @@ export class WebmailAccessComponent implements OnInit {
     if(this.webmailaccessForm.invalid){
       return;
     }
-    else{
+    else{//console.log("before calling service", this.webmailAccessReq)
       var date = new Date();
-      this.webmailAccessReq.reqNo = '';
-      this.webmailAccessReq.reqSrNo = 0;
-      this.webmailAccessReq.processId = '';
-      this.webmailAccessReq.reqBy = ''; //to be taken from user emp code logged in
-      this.webmailAccessReq.emailId = this.webmailaccessForm.value.currentEmailID;
-      this.webmailAccessReq.reqDate = date;
-      this.webmailAccessReq.reqTime = date.toLocaleTimeString();
-      this.webmailAccessReq.workflowId = '';
-      
-      this.webmailAccessService.postWebmailReq(this.webmailAccessReq).subscribe(
-        (data: WebmailRequest) => { 
-          console.log('On Success')
-          this.message = "Request submitted successfully"
-          console.log(data);
-        },
-        (error: any) => {
-          console.log('on error')
-          this.message = "Error: " + error.statusText + error.message;
-          console.log(error);
-        }
-      );
-      console.warn(this.webmailAccessReq);
-      alert('Success!')
-    }
-    
+      const webmailAccessReq  =  {
+      reqNo :'',
+      reqSrNo : 0,
+      processId : 'WM',
+      reqBy : 'SS004700', //to be taken from user emp code logged in
+      emailId : this.webmailaccessForm.value.currentEmailID,
+      reqDate : date,
+      reqTime : date.toLocaleTimeString(),
+      workflowId : ""
+    };
+    this.webmailAccessService.postWebmailReq(webmailAccessReq)
+    .subscribe((data: PostResponse) => { 
+        const resData = data;
+        console.log("success:", resData);
+        this.respMessage = "Request submiited Successfully. Your request Id : " + resData.reqNo + " & Workflow Id : " + resData.workflowId;
+      },
+      (error: any) => {
+        console.log('on error : ', error)
+        this.respMessage = "Error: " + error.statusText + error.message;
+       });
+      }
   }
 }
