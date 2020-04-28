@@ -30,7 +30,7 @@ export class WebmailAccessComponent implements OnInit {
     if(this.webmailaccessForm.invalid){
       return;
     }
-    else{//console.log("before calling service", this.webmailAccessReq)
+    else {//console.log("before calling service", this.webmailAccessReq)
       var date = new Date();
       const webmailAccessReq  =  {
       reqNo :'',
