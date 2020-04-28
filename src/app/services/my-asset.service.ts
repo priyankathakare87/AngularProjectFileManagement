@@ -3,6 +3,7 @@ import { MyAsset } from '../model/myAsset';
 import { AssetRequest } from '../model/assetRequest';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { observable, Observable} from 'rxjs';
+import { PostResponse } from '../model/post-response';
 
 
 @Injectable({
@@ -28,9 +29,9 @@ export class MyAssetService {
     return this.myassetnormal;
   }
  
-  postMyAsset(asset: AssetRequest): Observable<AssetRequest>  {
+  postMyAsset(asset: AssetRequest): Observable<PostResponse>  {
     //console.log(asset)
-    return this.http.post<AssetRequest>(this.urlpost, asset);
+    return this.http.post<PostResponse>(this.urlpost, asset);
   } 
 
 }
