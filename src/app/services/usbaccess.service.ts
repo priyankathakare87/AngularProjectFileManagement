@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { UsbRequest } from '../model/usb-request';
+import { PostResponse } from '../model/post-response';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ export class UsbaccessService {
 
   constructor(private http: HttpClient) { }
 
-  postUsbAccessReq(usbreqobj: UsbRequest): Observable<UsbRequest>  {
+  postUsbAccessReq(usbreqobj: UsbRequest): Observable<PostResponse>  {
     //console.log(asset)
-    return this.http.post<UsbRequest>(this.url, usbreqobj);
+    return this.http.post<PostResponse>(this.url, usbreqobj);
   }
  }
