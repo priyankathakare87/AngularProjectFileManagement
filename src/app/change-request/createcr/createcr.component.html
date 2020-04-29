@@ -4,58 +4,72 @@
     <mat-form-field>
         <input matInput placeholder="SolMan Ticket No." formControlName="ticketno">
     </mat-form-field>
-</div>
-<div>
     <mat-form-field>
-        <mat-label>Select Component</mat-label>
+        <mat-label>Component</mat-label>
         <mat-select formcontrolname="component">
           <mat-option *ngFor="let component of componentList" [value]="component.value">
             {{component.viewValue}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-</div>
-<div>
     <!-- <mat-form-field>   
         <input matInput type="text" placeholder="Priority" formControlName="priority">
     </mat-form-field> -->
     <mat-form-field>
-        <mat-label>Select Priority</mat-label>
+        <mat-label>Priority</mat-label>
         <mat-select formcontrolname="priority">
           <mat-option *ngFor="let prio of prioritylist" [value]="prio.value">
             {{prio.viewValue}}
           </mat-option>
         </mat-select>
       </mat-form-field>
-</div>
-<div>
-    <div>
+      <mat-form-field>
+        <mat-label>CR Type</mat-label>
+        <mat-select formcontrolname="crType">
+          <mat-option *ngFor="let type of types" [value]="type.value">
+            {{type.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
         <mat-form-field>
-          <mat-label>Choose a date</mat-label>
+          <mat-label>CR Date</mat-label>
           <input matInput readonly [matDatepicker]="picker" placeholder="CR Raised On" formControlName="raisedOn" [max]="maxDate">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
        </mat-form-field>
-      </div>
+    </div>
+<div>
+    <button mat-raised-button (click)="openDialog('EP')" class="btn">Exisitng Process</button>
 </div>
-<div id="child-radio">
-    Select CR Type
+<div>
+    <button mat-raised-button (click)="openDialog('PP')" class="btn">Proposed Process</button>
+</div>
+    <!-- <mat-label>CR Type</mat-label>
     <mat-radio-group class="radio-group" formControlName="crType" >
         <mat-radio-button class="radio-button" *ngFor="let type of types" [value]="type.id">
             {{type.viewValue}}
         </mat-radio-button>
-  </mat-radio-group> 
-</div>   
-<div>      
+  </mat-radio-group>  --> 
+<!-- <div>      
     <mat-form-field>
         <textarea matInput placeholder="Existing Process" formControlName="existingProcess"></textarea>
     </mat-form-field>
-</div>
-<div>
+</div>     -->
+<!-- <div>
+    <mat-label>Exisitng Process</mat-label>
+    <ckeditor name="eProcess" required [config]="ckeConfig" debounce="500">    
+    </ckeditor>
+    
+</div> -->
+<!-- <div>
     <mat-form-field>
         <textarea matInput placeholder="Proposed Process" formControlName="proposedProcess"></textarea>
     </mat-form-field>
-</div>
+</div> -->
+<!-- <div>
+    <mat-label>Proposed Process</mat-label>
+    <ckeditor name="pProcess" required [config]="ckeConfig" debounce="500"></ckeditor>
+</div> -->
 <div>
     <button mat-raised-button type="submit" color="primary" class="btn">Submit</button> 
     <button mat-raised-button type="reset" color="warn" class="btn">Reset</button> 

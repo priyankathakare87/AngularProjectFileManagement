@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CreateCr } from '../../model/create-cr';
 import { CreatecrService } from '../../services/createcr.service';
+import { Router } from '@angular/router';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+import { TextEditorComponent } from '../../text-editor/text-editor.component';
 
 interface forMatSelect {
   value: string;
@@ -43,7 +46,7 @@ export class CreatecrComponent implements OnInit {
     existingProcess: new FormControl(null, Validators.required),
     proposedProcess: new FormControl(null, Validators.required)
   });
-  constructor(private createcrserviceobj: CreatecrService) { }
+  constructor(private createcrserviceobj: CreatecrService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.maxDate = new Date();
@@ -76,5 +79,33 @@ export class CreatecrComponent implements OnInit {
         }
       );
     console.warn(this.createcrForm.value);
+  }
+
+  openDialog(processtype : string){
+    //this.router.navigate(['/text-editor']);
+    const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
+        //dialogConfig.autoFocus = true;
+        if(processtype == 'EP')
+        {
+          dialogConfig.data = {
+            id: 1,
+            title: 'Existing Process'
+          };
+        }
+        else if(processtype == 'PP')
+        {
+          dialogConfig.data = {
+            id: 1,
+            title: 'Proposed Process'
+        };
+        }
+        this.dialog.open(TextEditorComponent, dialogConfig);
+        const dialogRef = this.dialog.open(TextEditorComponent, dialogConfig);
+
+        dialogRef.afterClosed().subscribe(
+          data => console.warn("Dialog output:", data)
+      );    
+    
   }
 }

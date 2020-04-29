@@ -46,6 +46,9 @@ import { SharedfolderComponent } from './sharedfolder/sharedfolder.component';
 import { WebmailAccessComponent } from './webmail-access/webmail-access.component';
 import { UsbAccessComponent } from './usb-access/usb-access.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CKEditorModule } from 'ng2-ckeditor';
+import { TextEditorComponent } from './text-editor/text-editor.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +75,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     SharedfolderComponent,
     WebmailAccessComponent,
     UsbAccessComponent,
+    TextEditorComponent,
     ],
   imports: [
     NgbModule,
@@ -101,13 +105,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatTableModule,
     MatDialogModule,
     MatCheckboxModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    CKEditorModule
   ],
   providers: [
     AssetService, AuthGuard, LoginService,
     ],
   bootstrap: [AppComponent],
-  entryComponents: [WorkFlowDialogComponent]
+  entryComponents: [WorkFlowDialogComponent, TextEditorComponent]
 
 })
 
