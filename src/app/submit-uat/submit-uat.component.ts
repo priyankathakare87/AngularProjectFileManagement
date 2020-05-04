@@ -17,10 +17,10 @@ interface forMatSelect {
   viewValue: string;
 }
 const ELEMENT_DATA: UsersData[] = [
-  //  {id: 1560608769632, tcode: 'Artificial Intelligence', stepsforexecution: 'abcdFinally, once you have defined your columns, you need to tell the table which columns will be rendered in the header and data rows. To start, create a variable in your component that contains the list of the columns you want to render.', expectedresult: 'sjrbguebobsjvs', outputresult: 'irgheuhgoiebvodfnov', status: 'OK'},
-  //  {id: 1560608796014, tcode: 'Machine Learning', stepsforexecution: 'abcd', expectedresult: 'sjrbguebobsjvs', outputresult: 'irgheuhgoiebvodfnov', status: 'OK'},
-  //  {id: 1560608787815, tcode: 'Robotic Process Automation', stepsforexecution: 'abcd', expectedresult: 'sjrbguebobsjvs', outputresult: 'irgheuhgoiebvodfnov', status: 'OK'},
-  //  {id: 1560608805101, tcode: 'Blockchain', stepsforexecution: 'abcd', expectedresult: 'sjrbguebobsjvs', outputresult: 'irgheuhgoiebvodfnov', status: 'OK'}
+   {id: 1560608769632, tcode: 'Artificial Intelligence', stepsforexecution: 'abcdFinally, once you have defined your columns, you need to tell the table which columns will be rendered in the header and data rows. To start, create a variable in your component that contains the list of the columns you want to render.', expectedresult: 'sjrbguebobsjvs', outputresult: 'irgheuhgoiebvodfnov', status: 'OK'},
+   {id: 1560608796014, tcode: 'Machine Learning', stepsforexecution: 'abcd', expectedresult: 'sjrbguebobsjvs', outputresult: 'irgheuhgoiebvodfnov', status: 'OK'},
+   {id: 1560608787815, tcode: 'Robotic Process Automation', stepsforexecution: 'abcd', expectedresult: 'sjrbguebobsjvs', outputresult: 'irgheuhgoiebvodfnov', status: 'OK'},
+   {id: 1560608805101, tcode: 'Blockchain', stepsforexecution: 'abcd', expectedresult: 'sjrbguebobsjvs', outputresult: 'irgheuhgoiebvodfnov', status: 'OK'}
 ];
 
 @Component({
