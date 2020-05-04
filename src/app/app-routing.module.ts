@@ -15,6 +15,8 @@ import { UatComponent } from './change-request/uat/uat.component';
 import { WorkflowComponent } from './workflow/workflow.component';
 import { AuthGuard } from './auth.guard';
 import { TextEditorComponent } from './text-editor/text-editor.component';
+import { SubmitUatComponent } from './submit-uat/submit-uat.component';
+import { SharedfolderAccessComponent } from './sharedfolder-access/sharedfolder-access.component';
 
 
 const routes: Routes = [
@@ -31,7 +33,8 @@ const routes: Routes = [
   { path: 'create-cr', component: CreatecrComponent },
   { path: "uat", component:UatComponent },
   { path: "workflow", component: WorkflowComponent },
-  { path: 'text-editor', component: TextEditorComponent }
+  { path: 'text-editor', component: TextEditorComponent },
+  { path: 'uat-submit', component: SubmitUatComponent }
 
 ];
 

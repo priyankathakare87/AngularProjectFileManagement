@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 
 export interface user {
   value: string;
@@ -16,30 +16,65 @@ interface Food {
 })
 
 export class SharedfolderAccessComponent implements OnInit {
-  foods: Food[] = [
-    {value: 'steak-0', viewValue: 'Steak'},
-    {value: 'pizza-1', viewValue: 'Pizza'},
-    {value: 'tacos-2', viewValue: 'Tacos'}
-  ];
+  userTable: FormGroup;
+  control: FormArray;
+  mode: boolean;
+  touchedRows: any;
+  constructor(private fb: FormBuilder) { }
 
-  users: user[] = [
-    {value: 'self', viewValue: 'Self'},
-    {value: 'vendor', viewValue: 'Vendor'},
-    {value: 'auditor', viewValue: 'Auditors'}
-  ];
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit(): void {
+    this.touchedRows = [];
+    this.userTable = this.fb.group({
+      tableRows: this.fb.array([])
+    });
+    this.addRow();
   }
 
-  public accesstype = [ 'Read Only', 'Read / Write'];
-  public accesses = this.accesstype.slice();
+  ngAfterOnInit() {
+    this.control = this.userTable.get('tableRows') as FormArray;
+  }
 
-  public sharedfolderForm: FormGroup = new FormGroup({
-    usedBy: new FormControl(null, Validators.required),
-    typeofAccess: new FormControl(null, Validators.required),
-    sharedfolderName: new FormControl(null, Validators.required),
-    reason: new FormControl(null, [Validators.required, Validators.minLength(5)])
-  });
-  onSubmit(){}
+  initiateForm(): FormGroup {
+    return this.fb.group({
+      tcode: ['', Validators.required],
+      stepsforexecution: ['', Validators.required],
+      expectedresult: ['', Validators.required],
+      outputresult: [''],
+      status: ['', Validators.required],
+      isEditable: [true]
+    });
+  }
+
+  addRow() {
+    const control =  this.userTable.get('tableRows') as FormArray;
+    control.push(this.initiateForm());
+  }
+
+  deleteRow(index: number) {
+    const control =  this.userTable.get('tableRows') as FormArray;
+    control.removeAt(index);
+  }
+
+  editRow(group: FormGroup) {
+    group.get('isEditable').setValue(true);
+  }
+
+  doneRow(group: FormGroup) {
+    group.get('isEditable').setValue(false);
+  }
+
+  saveUserDetails() {
+    console.log(this.userTable.value);
+  }
+
+  get getFormControls() {
+    const control = this.userTable.get('tableRows') as FormArray;
+    return control;
+  }
+
+  submitForm() {
+    const control = this.userTable.get('tableRows') as FormArray;
+    this.touchedRows = control.controls.filter(row => row.touched).map(row => row.value);
+    console.log(this.touchedRows);
+  }
 }

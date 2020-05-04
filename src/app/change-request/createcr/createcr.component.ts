@@ -84,8 +84,8 @@ export class CreatecrComponent implements OnInit {
   openDialog(processtype : string){
     //this.router.navigate(['/text-editor']);
     const dialogConfig = new MatDialogConfig();
-        dialogConfig.disableClose = true;
-        //dialogConfig.autoFocus = true;
+        dialogConfig.disableClose = false;
+        dialogConfig.autoFocus = false;
         if(processtype == 'EP')
         {
           dialogConfig.data = {

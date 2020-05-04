@@ -8,12 +8,11 @@ import { PostResponse } from '../model/post-response';
   providedIn: 'root'
 })
 export class UsbaccessService {
-  private url = 'http://10.20.11.46:3000/post_usbaccessreq';
+  private url = 'http://localhost:3000/assets/usb/create';
 
   constructor(private http: HttpClient) { }
 
   postUsbAccessReq(usbreqobj: UsbRequest): Observable<PostResponse>  {
-    //console.log(asset)
+    console.log("inside service : ", usbreqobj)
     return this.http.post<PostResponse>(this.url, usbreqobj);
-  }
- }
+  } }

@@ -36,7 +36,7 @@ import { MyAssetsComponent } from './my-assets/my-assets.component';
 import { CreatecrComponent } from './change-request/createcr/createcr.component';
 import { UatComponent } from './change-request/uat/uat.component';
 import { WorkflowComponent } from './workflow/workflow.component';
-import { MatTableModule } from '@angular/material';
+import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material';
 import { WorkFlowDialogComponent } from './workflow/workflow-dialog.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -48,6 +48,10 @@ import { UsbAccessComponent } from './usb-access/usb-access.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { TextEditorComponent } from './text-editor/text-editor.component';
+import { SubmitUatComponent } from './submit-uat/submit-uat.component';
+import { AddrowUatComponent } from './addrow-uat/addrow-uat.component';
+import { RichtextEditorComponent } from './richtext-editor/richtext-editor.component';
+
 
 @NgModule({
   declarations: [
@@ -76,6 +80,9 @@ import { TextEditorComponent } from './text-editor/text-editor.component';
     WebmailAccessComponent,
     UsbAccessComponent,
     TextEditorComponent,
+    SubmitUatComponent,
+    AddrowUatComponent,
+    RichtextEditorComponent,
     ],
   imports: [
     NgbModule,
@@ -112,7 +119,7 @@ import { TextEditorComponent } from './text-editor/text-editor.component';
     AssetService, AuthGuard, LoginService,
     ],
   bootstrap: [AppComponent],
-  entryComponents: [WorkFlowDialogComponent, TextEditorComponent]
+  entryComponents: [WorkFlowDialogComponent, TextEditorComponent, AddrowUatComponent]
 
 })
 

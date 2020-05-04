@@ -19,7 +19,7 @@ export class UsbAccessComponent implements OnInit {
   });
 
   accessList: string[] = ['USB', 'DVD'];
-  usbAccessReq : UsbRequest;
+ // usbAccessReq : UsbRequest;
   message = '';
   minDate;
   respMessage = '';
@@ -74,14 +74,17 @@ export class UsbAccessComponent implements OnInit {
       const usbAccessReq = {
          reqNo: '',
          reqSrNo: 0,
-         processId: '',
-         reqBy: '',
+         processId: 'UP',
+         reqBy: 'SS004700',
          accessType: this.usbaccessForm.value.accessfor.toLocaleString(),
+         accessDate: this.usbaccessForm.value.sdate, 
          noofDays: days, 
          reqDate: date,
          reqTime: date.toLocaleTimeString(),
          workflowId: ''
        };
+
+       console.log(usbAccessReq);
       // //console.warn(days);
       // // this.usbAccessReq.reqNo = '';
       // // this.usbAccessReq.reqSrNo = 0;
@@ -94,7 +97,7 @@ export class UsbAccessComponent implements OnInit {
       // // this.usbAccessReq.reqTime = date.toLocaleTimeString();
       // // this.usbAccessReq.workflowId = '';
 
-       this.usbaccessserviceobj.postUsbAccessReq(this.usbAccessReq).
+       this.usbaccessserviceobj.postUsbAccessReq(usbAccessReq).
        subscribe((data: PostResponse) => { 
          const resData = data;
          console.log("success:", resData);
