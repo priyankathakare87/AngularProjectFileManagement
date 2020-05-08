@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule, MatCardModule, MatButtonModule, MatToolbarModule, MatExpansionModule, MatMenuModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -51,7 +52,34 @@ import { TextEditorComponent } from './text-editor/text-editor.component';
 import { SubmitUatComponent } from './submit-uat/submit-uat.component';
 import { AddrowUatComponent } from './addrow-uat/addrow-uat.component';
 import { RichtextEditorComponent } from './richtext-editor/richtext-editor.component';
+import { AdminComponent } from './admin/admin.component';
 
+//for nested mat table newly added
+import {A11yModule} from '@angular/cdk/a11y';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import {PortalModule} from '@angular/cdk/portal';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {CdkStepperModule} from '@angular/cdk/stepper';
+import {CdkTableModule} from '@angular/cdk/table';
+import {CdkTreeModule} from '@angular/cdk/tree';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatBadgeModule} from '@angular/material/badge';
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatRippleModule} from '@angular/material/core';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSortModule} from '@angular/material/sort';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatTreeModule} from '@angular/material/tree';
 
 @NgModule({
   declarations: [
@@ -83,6 +111,7 @@ import { RichtextEditorComponent } from './richtext-editor/richtext-editor.compo
     SubmitUatComponent,
     AddrowUatComponent,
     RichtextEditorComponent,
+    AdminComponent,
     ],
   imports: [
     NgbModule,
@@ -113,13 +142,53 @@ import { RichtextEditorComponent } from './richtext-editor/richtext-editor.compo
     MatDialogModule,
     MatCheckboxModule,
     FlexLayoutModule,
-    CKEditorModule
+    CKEditorModule,
+
+    A11yModule,
+    CdkStepperModule,
+    CdkTableModule,
+    CdkTreeModule,
+    DragDropModule,
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatTreeModule,
+    PortalModule,
+    ScrollingModule,
   ],
   providers: [
     AssetService, AuthGuard, LoginService,
     ],
   bootstrap: [AppComponent],
-  entryComponents: [WorkFlowDialogComponent, TextEditorComponent, AddrowUatComponent]
+  entryComponents: [WorkFlowDialogComponent, TextEditorComponent, AddrowUatComponent, AdminComponent]
 
 })
 

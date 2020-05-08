@@ -39,8 +39,7 @@ a:hover{
 tr.row-hover:hover {
   background: #777;
 }
-forbtn{
-    font-size: smaller;
-    float: right;
-    
+#childbtn{
+position: relative;
+align-self: flex-end;
 }

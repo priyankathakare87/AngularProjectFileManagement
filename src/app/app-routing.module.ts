@@ -17,6 +17,7 @@ import { AuthGuard } from './auth.guard';
 import { TextEditorComponent } from './text-editor/text-editor.component';
 import { SubmitUatComponent } from './submit-uat/submit-uat.component';
 import { SharedfolderAccessComponent } from './sharedfolder-access/sharedfolder-access.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 const routes: Routes = [
@@ -34,7 +35,8 @@ const routes: Routes = [
   { path: "uat", component:UatComponent },
   { path: "workflow", component: WorkflowComponent },
   { path: 'text-editor', component: TextEditorComponent },
-  { path: 'uat-submit', component: SubmitUatComponent }
+  { path: 'uat-submit', component: SubmitUatComponent },
+  { path: 'admin', component: AdminComponent}
 
 ];
 
