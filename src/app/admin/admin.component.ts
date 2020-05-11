@@ -27,102 +27,61 @@ export class AdminComponent {
     return row.hasOwnProperty('detailRow');
   } 
   expandedElement: any;
+  messageSuccess: boolean;
+  iremarks: string;
 
   // @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('sort', { static: true }) sort: MatSort;
+  // @ViewChild('sort', { static: true }) sort: MatSort;
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource(this.getRows());
-    this.dataSource.sort = this.sort;
-    this.dataSource.sortingDataAccessor = (item, property) => {
+    //this.dataSource.sort = this.sort;
+    // this.dataSource.sortingDataAccessor = (item, property) => {
 
-      let newItem;
-      if (item.element !== undefined)
-        newItem = item.element;
-      else
-        newItem = item; 
+    //   let newItem;
+    //   if (item.element !== undefined)
+    //     newItem = item.element;
+    //   else
+    //     newItem = item; 
 
-      console.log(this.tempElementData); 
-      let foundElement;
+    //   console.log(this.tempElementData); 
+    //   let foundElement;
       
-      if (item.element !== undefined)
-        foundElement = this.tempElementData.find(i => i.element !== undefined && item.element.name === i.element.name);
-      else 
-        foundElement = this.tempElementData.find(i => item.name === i.name);
+    //   if (item.element !== undefined)
+    //     foundElement = this.tempElementData.find(i => i.element !== undefined && item.element.name === i.element.name);
+    //   else 
+    //     foundElement = this.tempElementData.find(i => item.name === i.name);
 
-      let index = this.tempElementData.indexOf(foundElement);
-      console.log("foundElement: " + JSON.stringify(item) + " " + +index);
-      return +index;
-    }
-  }
-
-  sortFilteredData(property) {
-    let unsortedData = this.dataSource.filteredData.map(g => Object.assign({}, g));
-
-    if (property === "name") {
-      unsortedData.sort(this.nameComparer);
-    }
-
-    //console.log(unsortedData);
-
-    let sortedData = new Array();
-
-    for (var i = 0, j = 0; i < unsortedData.length; i++) {
-      if (unsortedData[i].element === undefined) {
-        sortedData[j] = unsortedData[i];
-        j += 2;
-      }
-    } 
-
-    console.log(sortedData);
-
-
-    unsortedData = unsortedData.filter(course => course.element !== undefined);
-
-    for (var i = 0; i < sortedData.length; i += 2) {
-      let name = unsortedData.find(course => course.element.name ===
-        sortedData[i].name);
-      sortedData[i + 1] = name;
-    }
-
-   console.log(sortedData);
-
-    this.tempElementData = sortedData;
-  }
-
-  nameComparer(nameA, nameB) {
-    if (nameA.element !== undefined)
-      nameA = nameA.element;
-
-    if (nameB.element !== undefined)
-      nameB = nameB.element;
-
-    nameA = nameA.name;
-    nameB = nameB.name;
-
-    if (nameA === nameB)
-      return 0;
-
-    if (nameA < nameB)
-      return -1;
-
-    return 1;
+    //   let index = this.tempElementData.indexOf(foundElement);
+    //   console.log("foundElement: " + JSON.stringify(item) + " " + +index);
+    //   return +index;
+    // }
   }
 
   getRows() { 
     const rows = [];
-    data.forEach(element => rows.push(element, { detailRow: true,      element }));
+    data.forEach(element => rows.push(element, { detailRow: true, element }));
     //console.log(rows);
     return rows;
   }
 
   toggleRow(value: Element) {
     const foundElement = this.dataSource.data.find(elem => elem.element !== undefined && elem.element.name === value.name)    
-    //console.log("The found element is " + JSON.stringify(foundElement));
+    console.log("The found element is " + JSON.stringify(foundElement));
     const index = this.dataSource.data.indexOf(foundElement);
     this.dataSource.data[index].element.show = !this.dataSource.data[index].element.show;
   }
-
+  approveRequest(remarks: string, expandedRow: Element){
+    console.warn(remarks, expandedRow.name);
+    setTimeout(()=>{    //<<<---    using ()=> syntax
+    this.toggleRow(expandedRow)}, 3000);
+    this.iremarks = '';
+  }
+  rejectRequest(remarks: string, expandedRow: Element){
+    console.warn('rejected ' + expandedRow.name + ' because of ' + remarks);
+    this.toggleRow(expandedRow);
+    this.iremarks = '';
+  }
 }
 
 export interface Element {
