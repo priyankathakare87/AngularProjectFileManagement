@@ -1,4 +1,4 @@
-.title-center {
+/* .title-center {
   margin: 0 auto;
 }
 
@@ -8,7 +8,7 @@
 }
 .toolbarbutton-left-margin{
   margin-left: 30px;
-}
+} */
 
 div{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -19,9 +19,9 @@ div{
   height: 250px;
   width: 1444px;
 } */
-.in-h-image {
+/* .in-h-image {
   background: url('src\assets\images\keyboard.jpg') no-repeat;
   height: 300px;
   background-size: cover;
-}
+} */
 

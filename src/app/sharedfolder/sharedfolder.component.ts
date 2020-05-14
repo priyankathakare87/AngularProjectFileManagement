@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl} from '@angular/forms';
-import { addListener } from 'cluster';
+import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { SharedfolderRequest } from '../model/sharedfolder-request';
+import { SharedfolderService } from '../services/sharedfolder.service';
+import { PostResponse } from '../model/post-response';
+
 interface User {
   value: string;
   viewValue: string;
@@ -27,26 +30,54 @@ export class SharedfolderComponent implements OnInit {
     {value: 1, viewValue: 'Read Only'},
     {value: 2, viewValue: 'Read / Write'}
   ];
-
-  constructor() { }
+  private sharedfolderaccessreq : SharedfolderRequest;
+  message= '';
+  respMessage= '';
+  constructor(private sharedfolderaccessservice : SharedfolderService) { }
 
   ngOnInit() {
   }
 
-  sharedfolderForm: FormGroup = new FormGroup({
-    usedBy: new FormControl(),
-    ad: new FormControl(),
-    typeofAccess: new FormControl(),
-    sharedfolderName: new FormControl(),
-    reason: new FormControl(),
+  sharedfolderForm = new FormGroup({
+    usedBy: new FormControl('', Validators.required),
+    ad: new FormControl('', [Validators.required, Validators.pattern('^\\d*$')]),
+    typeofAccess: new FormControl('', Validators.required),
+    sharedfolderName: new FormControl('', Validators.required),
+    reason: new FormControl('', Validators.required),
   }); 
   
   onSubmit(){
-    // TODO: Use EventEmitter with form value
-    console.warn(this.sharedfolderForm.value);
-  }
-  change(){
-    console.log('in change');
-    
+    if(this.sharedfolderForm.invalid){
+      return;
+    }
+    else{
+      var date = new Date();
+      const sharedfolderaccessreq = {
+        reqNo:'',
+        reqSrNo: 0,
+        processId: '',
+        reqBy: '',
+        useBy: '',
+        userAd: this.sharedfolderForm.value.ad,
+        accessType: this.sharedfolderForm.value.typeofAccess,
+        folder_name: this.sharedfolderForm.value.folder_name,
+        reason: this.sharedfolderForm.value.reason,
+        reqDate: date,
+        reqTime: date.toLocaleTimeString(),
+        workflowId: ''
+      };
+      
+      this.sharedfolderaccessservice.postSharedFolderAccessReq(this.sharedfolderaccessreq).
+      subscribe((data: PostResponse) => { 
+        const resData = data;
+        console.log("success:", resData);
+        this.respMessage = "Request submiited Successfully. Your request Id : " + resData.reqNo + " & Workflow Id : " + resData.workflowId;
+      },
+      (error: any) => {
+        console.log('on error : ', error)
+        this.respMessage = "Error: " + error.statusText + error.message;
+       });
+      }
   }
 }
+

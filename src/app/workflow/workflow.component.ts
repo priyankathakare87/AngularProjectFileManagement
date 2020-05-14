@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import { WorkFlowDialogComponent } from './workflow-dialog.component'
-import { stripGeneratedFileSuffix } from '@angular/compiler/src/aot/util';
 
 export interface PeriodicElement {
   position: number;

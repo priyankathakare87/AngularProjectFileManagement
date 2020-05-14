@@ -5,6 +5,7 @@ import { MyAssetService } from 'src/app/services/my-asset.service';
 import { AssetReqComponent } from 'src/app/asset/asset-req/asset-req.component';
 import { nullSafeIsEquivalent } from '@angular/compiler/src/output/output_ast';
 import { LoginService } from 'src/app/services/login.service';
+import { PostResponse } from 'src/app/model/post-response';
 
 export interface user {
   value: string;
@@ -20,7 +21,7 @@ export interface user {
 export class HardsoftComponent implements OnInit {
 
   public message = "";
-  1: user[] = [
+  users: user[] = [
     {value: 'self', viewValue: 'Self' },
     {value: 'vendor', viewValue: 'Vendor'},
     {value: 'auditor', viewValue: 'Auditors'}
@@ -51,6 +52,7 @@ export class HardsoftComponent implements OnInit {
     quantity: new FormControl(1, [Validators.required, Validators.min(1)]),
     reason: new FormControl(null, [Validators.required, Validators.minLength(5)])
   });
+  respMessage= '';
 
   constructor(private myAsset : MyAssetService, private loginService: LoginService ) { }
 
@@ -73,31 +75,42 @@ onSubmit(){
   var curr_date = new Date(); 
   var today = curr_date.toLocaleDateString();
   var time = curr_date.toLocaleTimeString();
-  this.assetRequset.reqNo = 'AT';
-  this.userid = this.loginService.getUserId();
-  this.assetRequset.reqBy = this.userid;
-  this.assetRequset.reqRetflag = 'req';
-  this.assetRequset.processId = 'hardsoft';
-  this.assetRequset.assetType = this.hardsoftForm.value.assetType;
-  this.assetRequset.quantity = this.hardsoftForm.value.quantity;
-  this.assetRequset.reason = this.hardsoftForm.value.reason;
-  this.assetRequset.reqDate = curr_date;
-  this.assetRequset.reqTime = time;
-  this.assetRequset.workflowId = 'A12345';
+  const assetRequest = {
+    reqNo: '',
+    userid: '4700',
+    reqBy: '',
+    reqRetflag: '',
+    processId: '',
+    assetType: this.hardsoftForm.value.assetType,
+    quantity: this.hardsoftForm.value.quantity,
+    reason: this.hardsoftForm.value.reason,
+    reqDate: curr_date,
+    reqTime: time,
+    workflowId: ''
+  };
+  // this.assetRequset.reqNo = 'AT';
+  // this.userid = this.loginService.getUserId();
+  // this.assetRequset.reqBy = this.userid;
+  // this.assetRequset.reqRetflag = 'req';
+  // this.assetRequset.processId = 'hardsoft';
+  // this.assetRequset.assetType = this.hardsoftForm.value.assetType;
+  // this.assetRequset.quantity = this.hardsoftForm.value.quantity;
+  // this.assetRequset.reason = this.hardsoftForm.value.reason;
+  // this.assetRequset.reqDate = curr_date;
+  // this.assetRequset.reqTime = time;
+  // this.assetRequset.workflowId = 'A12345';
 
-  console.log(this.assetRequset);
+  // console.log(this.assetRequset);
     
-  this.myAsset.postMyAsset(this.assetRequset).subscribe(
-    (data: AssetRequest) => { 
-      console.log('On Success')
-      this.message = "Request submitted successfully"
-      console.log(data);
-    },
-    (error: any) => {
-      console.log('on error')
-      this.message = "Error: " + error.statusText + error.message;
-      console.log(error);
-    }
-  );
-}  
+  this.myAsset.postMyAsset(this.assetRequset).
+  subscribe((data: PostResponse) => { 
+    const resData = data;
+    console.log("success:", resData);
+    this.respMessage = "Request submiited Successfully. Your request Id : " + resData.reqNo + " & Workflow Id : " + resData.workflowId;
+  },
+  (error: any) => {
+    console.log('on error : ', error)
+    this.respMessage = "Error: " + error.statusText + error.message;
+   });
+  }
 }

@@ -1,4 +1,6 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="hardsoftForm">
+<section>
+<form (ngSubmit)="onSubmit()" [formGroup]="hardsoftForm" fxLayout="column" fxLayoutAlign="center center">
+    <br>
     <p>Request for hardware or software</p>
    <div>
     <mat-form-field>
@@ -18,13 +20,13 @@
                name="assetCat"
                formControlName="assetCat"
                value="hardware"
-               (click)="selecthardwares()">Hardware
+               (click)="selecthardwares()">&nbsp;Hardware &nbsp;&nbsp;
          
         <input type="radio"
                name="assetCat"
                formControlName="assetCat"
                value="software"
-               (click)="selectsoftwares()">Software
+               (click)="selectsoftwares()">&nbsp;Software
 </div>
 <div>
   <mat-form-field>
@@ -74,7 +76,9 @@
             Minimum length of reason should be mora than five charecters
     </div>
 </div> 
+<div>
 <button mat-raised-button type="submit" color="primary">Submit</button>
+</div>
 </form>
-
 <h5>{{ message }}</h5>
+</section>

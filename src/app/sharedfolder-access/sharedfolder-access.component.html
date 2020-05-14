@@ -1,63 +1,70 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="sharedfolderForm">
-    <p>Request for Shared Folder Access</p>
-   <div>
-    
-    </div> 
-
-    <mat-form-field>
-        <mat-label>Favorite food</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let food of foods" [value]="food.value">
-            {{food.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-<div>
-  <mat-form-field>
-    <mat-label>Type of Access</mat-label>
-    <mat-select formControlName="typeofAccess">
-        <mat-option *ngFor="let access of acesses" [value]="accesses">
-         {{asset}}
-        </mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
-<div class="valid_access" *ngIf="access.invalid && access.touched">
-    Please select access type 
- </div> 
-<div>
-    <mat-form-field>
-        <input 
-            matInput
-            placeholder="Name of Shared Folder" 
-            type="text"
-            formControlName="sharedfolderName">
-    </mat-form-field>
-</div>
-<div class="valid_sharedfoldername" 
-    *ngIf="sharedfolderName.invalid && sharedfolderName.touched">
-    <div *ngIf="sharedfolderName.errors.required">
-        Please enter the Name of the Shared Folder
-    </div>   
-</div> 
-<div>
-    <mat-form-field>
-        <textarea 
-            matInput 
-            placeholder="Reason"
-            formControlName="reason"></textarea>
-    </mat-form-field>
-</div>
-<div class="valid_reason" 
-    *ngIf="reason.invalid && reason.touched">
-    <div *ngIf="reason.errors.required">
-        Please enter the reason 
-    </div>   
-    <div *ngIf="reason.errors.minlength">
-            Minimum length of reason should be mora than five charecters
+<header>
+    <div>
     </div>
-</div> 
-<button mat-raised-button type="submit" color="primary">Submit</button>
-</form>
+  </header>
+  <form [formGroup]="userTable">
+      <table class='users'>
+        <thead class="text-nowrap">
+          <th class="w50">Tcode</th>
+          <th class="w300">Steps for Execution</th>
+          <th class="w200">Expected Result</th>
+          <th class="w200">Output Result</th>
+          <th class="w65">Status</th>
+          <th class="w65">Action</th>
+        </thead>
+        <tbody>
+          <ng-container formArrayName="tableRows" *ngFor="let group of getFormControls.controls ; let i=index">
+            <tr *ngIf="group.get('isEditable').value" [formGroupName]="i">
+              <td>
+                  <input class="w50" type="text" formControlName="tcode">
+              </td>
+              <td>
+                  <textarea class="w300" type="text" formControlName="stepsforexecution"></textarea>
+              </td>
+              <td>
+                  <input class="w200" type='text' formControlName="expectedresult">
+              </td>
+              <td>
+                  <input class="w200" type='text' formControlName="outputresult">
+              </td>
+              <td>
+                  <input class="w65" type="text" formControlName="status">
+              </td>
+              <td>
+                <mat-icon class="delete" (click)="deleteRow(i)">delete_forever</mat-icon>
+                <mat-icon class="done" (click)="doneRow(group)">done</mat-icon>
+              </td>
+            </tr>
+            <tr *ngIf="!group.get('isEditable').value" >
+              <td>
+                {{group.get('tcode').value}}
+              </td>
+              <td>
+                {{group.get('stepsforexecution').value}}
+              </td>
+              <td>
+                  {{group.get('expectedresult').value}}
+              </td>
+              <td>
+                  {{group.get('outputresult').value}}
+              </td>
+              <td>
+                {{group.get('status').value}}
+              </td>
+              <td>
+                <mat-icon class="edit" (click)="editRow(group)">edit</mat-icon>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+      <div class="action-container">
+        <button mat-raised-button type="submit" (click)="addRow()">Add row</button>
+        <button mat-raised-button [disabled]="userTable.invalid" type="submit" (click)="submitForm()">Submit</button>
+      </div>
+    </form>
+    <div class="output">
+      <p>Form Data:  {{userTable.value | json}}</p>
+        <p>Is Valid: {{userTable.valid}}</p>
+    </div>
 
-<h5>{{ message }}</h5>

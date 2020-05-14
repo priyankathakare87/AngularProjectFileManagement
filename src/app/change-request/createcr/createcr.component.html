@@ -1,77 +1,77 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="createcrForm" >
-<div class="form-data">
-<div >
-    <mat-form-field>
-        <input 
-            matInput
-            placeholder="SolMan Ticket"
-            type="number"
-            formControlName="ticket">
-    </mat-form-field>
-    <button mat-mini-fab type="button" color="primary">Get</button>
-</div>
-<div  class="solman-data">
-    <mat-form-field >
-      <input 
-          matInput
-          type="text"
-          placeholder="Component"
-          Value="Finance"
-          readonly="true"
-          formControlName="component">
-      </mat-form-field>
-          
-      <mat-form-field>   
-      <input
-          matInput
-          type="text"
-          placeholder="Priority"
-          Value="Very High"
-          readonly="true"
-          formControlName="priority">
-      </mat-form-field>
-      <mat-form-field>   
-        <input
-            matInput
-            type="text"
-            placeholder="Raised On"
-            Value="01.Jan.2020"
-            readonly="true"
-            formControlName="raisedOn">
-        </mat-form-field>
-  </div>
-</div>
-
-<div class="cr-data">
-   
-    <input type="radio"
-           name="crType"
-           formControlName="crType"
-           value="cr">Change Request
-    <input type="radio"
-           name="crType"
-           formControlName="crType"
-           value="bug">Bug Fixing       
-  
-    <mat-form-field>
-        <textarea 
-            matInput
-            placeholder="Existing Process"
-            formControlName="existingProcess">
-        </textarea>
-    </mat-form-field>
-  
-    <mat-form-field>
-        <textarea 
-            matInput
-            placeholder="Desired Process"
-            formControlName="desiredProcess">
-        </textarea>
-    </mat-form-field>
+<form (ngSubmit)="onSubmit()" [formGroup]="createcrForm" fxLayout="column" fxLayoutAlign="center center">
+<br>
 <div>
-<button mat-raised-button type="submit" color="primary">Submit</button> 
-<button mat-raised-button type="reset" color="warn">Reset</button> 
-</div>
-</div>
+    <mat-form-field>
+        <input matInput placeholder="SolMan Ticket No." formControlName="ticketno">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Component</mat-label>
+        <mat-select formcontrolname="component">
+          <mat-option *ngFor="let component of componentList" [value]="component.value">
+            {{component.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    <!-- <mat-form-field>   
+        <input matInput type="text" placeholder="Priority" formControlName="priority">
+    </mat-form-field> -->
+    <mat-form-field>
+        <mat-label>Priority</mat-label>
+        <mat-select formcontrolname="priority">
+          <mat-option *ngFor="let prio of prioritylist" [value]="prio.value">
+            {{prio.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>CR Type</mat-label>
+        <mat-select formcontrolname="crType">
+          <mat-option *ngFor="let type of types" [value]="type.value">
+            {{type.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+        <mat-form-field>
+          <mat-label>CR Date</mat-label>
+          <input matInput readonly [matDatepicker]="picker" placeholder="CR Raised On" formControlName="raisedOn" [max]="maxDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+       </mat-form-field>
+    </div>
+<div>EP
+  <app-richtext-editor></app-richtext-editor>
+  PP
+  <app-richtext-editor></app-richtext-editor>
 
+</div>
+    <!-- <mat-label>CR Type</mat-label>
+    <mat-radio-group class="radio-group" formControlName="crType" >
+        <mat-radio-button class="radio-button" *ngFor="let type of types" [value]="type.id">
+            {{type.viewValue}}
+        </mat-radio-button>
+  </mat-radio-group>  --> 
+<!-- <div>      
+    <mat-form-field>
+        <textarea matInput placeholder="Existing Process" formControlName="existingProcess"></textarea>
+    </mat-form-field>
+</div>     -->
+<!-- <div>
+    <mat-label>Exisitng Process</mat-label>
+    <ckeditor name="eProcess" required [config]="ckeConfig" debounce="500">    
+    </ckeditor>
+    
+</div> -->
+<!-- <div>
+    <mat-form-field>
+        <textarea matInput placeholder="Proposed Process" formControlName="proposedProcess"></textarea>
+    </mat-form-field>
+</div> -->
+<!-- <div>
+    <mat-label>Proposed Process</mat-label>
+    <ckeditor name="pProcess" required [config]="ckeConfig" debounce="500"></ckeditor>
+</div> -->
+<div>
+    <button mat-raised-button type="submit" color="primary" class="btn">Submit</button> 
+    <button mat-raised-button type="reset" color="warn" class="btn">Reset</button> 
+</div>
 </form>
